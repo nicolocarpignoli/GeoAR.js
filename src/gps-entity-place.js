@@ -49,8 +49,8 @@ AFRAME.registerComponent('gps-entity-place', {
             latitude: this._cameraGpsPosition.originCoords.latitude,
         };
 
-        position.x = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
-        position.x = position.x * (this.data.longitude > this._cameraGpsPosition.originCoords.longitude ? 1 : -1);
+        const xDistance = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
+        position.x = xDistance * (this.data.longitude > this._cameraGpsPosition.originCoords.longitude ? 1 : -1);
 
         // update position.z
         var dstCoords = {
@@ -58,10 +58,36 @@ AFRAME.registerComponent('gps-entity-place', {
             latitude: this.data.latitude,
         };
 
-        position.z = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
-        position.z = position.z * (this.data.latitude > this._cameraGpsPosition.originCoords.latitude ? -1 : 1);
+        const zDistance = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
+        position.z = zDistance * (this.data.latitude > this._cameraGpsPosition.originCoords.latitude ? -1 : 1);
 
         // update element's position in 3D world
         this.el.setAttribute('position', position);
+
+        // only for debug
+        const setDebugData = function(element, interval) {
+            document.querySelectorAll('.debug-distance').forEach((el) => {
+                const distance = formatDistance(xDistance);
+                if (element.getAttribute('name') == el.getAttribute('name')) {
+                    el.innerHTML = `${el.getAttribute('name')}: ${distance} far`;
+                }
+                clearInterval(interval);
+            });
+        };
+
+        const _deferredDebugInterval = setInterval(() => {
+            setDebugData(this.el, _deferredDebugInterval);
+        }, 1000);
+
     }
 });
+
+function formatDistance(distance) {
+    distance = distance.toFixed(0);
+
+    if (distance >= 1000) {
+        return `${distance/1000} kilometers`;
+    }
+
+    return `${distance} meters`;
+};

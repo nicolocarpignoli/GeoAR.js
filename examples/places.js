@@ -11,6 +11,12 @@ const PLACES = [
         longitude: 11.347180,
         placemarkColor: "yellow",
     },
+    {
+        name: "Via Spataro",
+        latitude: 44.492150,
+        longitude: 11.324330,
+        placemarkColor: "blue",
+    },
 ];
 
 
@@ -20,6 +26,7 @@ window.onload =  () => {
         const box = document.createElement('a-box');
         box.setAttribute('gps-entity-place', `latitude: ${place.latitude}; longitude: ${place.longitude};`);
         box.setAttribute('color', place.placemarkColor);
+        box.setAttribute('name', place.name);
         scene.appendChild(box);
     });
 };

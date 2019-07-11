@@ -25,6 +25,10 @@ AFRAME.registerComponent('rotation-reader', {
         origin_coords_longitude = document.querySelector('#origin_coords_longitude');
         camera_p_x = document.querySelector('#camera_p_x');
         camera_p_z = document.querySelector('#camera_p_z');
+
+        const _deferredSelector = setInterval(() => {
+            buildDistancesDebugUI(_deferredSelector);
+        }, 2000);
     },
     tick: function () {
         // updated rotation and position data for this thick
@@ -63,7 +67,7 @@ AFRAME.registerComponent('rotation-reader', {
 });
 
 function buildCameraDebugUI() {
-    return `<div style="position: fixed; top: 10px; left: 5px; width:100%; text-align: center; z-index: 1; color: limegreen">
+    return `<div class="debug" style="font-size: 0.5em; position: fixed; top: 10px; left: 5px; width:100%; text-align: center; z-index: 1; color: limegreen">
 			<div>
 				current lng/lat coords: <span id="current_coords_longitude"></span>, <span id="current_coords_latitude"></span>
 			</div>
@@ -78,4 +82,17 @@ function buildCameraDebugUI() {
 				yaw angle: <div id="yaw_angle">no value</div>
 			</div>
 		</div>`;
+}
+
+function buildDistancesDebugUI(_deferredSelector) {
+    const div = document.querySelector('.debug');
+    document.querySelectorAll('[gps-entity-place]').forEach((box) => {
+        const debugDiv = document.createElement('div');
+        debugDiv.classList.add('debug-distance');
+        debugDiv.innerHTML = box.getAttribute('name');
+        debugDiv.setAttribute('name', box.getAttribute('name'));
+        div.appendChild(debugDiv);
+    });
+
+    clearInterval(_deferredSelector);
 }

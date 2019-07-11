@@ -62,19 +62,19 @@ AFRAME.registerComponent('gps-camera-position', {
 			longitude: this.currentCoords.longitude,
 			latitude: this.originCoords.latitude,
 		};
-		position.x = this.computeDistanceMeters(this.originCoords, dstCoords);
-		position.x = position.x * (this.currentCoords.longitude > this.originCoords.longitude ? 1 : -1);
+		const xDistance = this.computeDistanceMeters(this.originCoords, dstCoords);
+		position.x = xDistance * (this.currentCoords.longitude > this.originCoords.longitude ? 1 : -1);
 
 		// compute position.z
 		var dstCoords = {
 			longitude: this.originCoords.longitude,
 			latitude: this.currentCoords.latitude,
 		}
-		position.z = this.computeDistanceMeters(this.originCoords, dstCoords);
-		position.z = position.z * (this.currentCoords.latitude > this.originCoords.latitude ? -1 : 1);
+		zDistance = this.computeDistanceMeters(this.originCoords, dstCoords);
+		position.z = zDistance * (this.currentCoords.latitude > this.originCoords.latitude ? -1 : 1);
 
-		// update element position
-		this.el.setAttribute('position', position);
+		// update position
+        this.el.setAttribute('position', position);
 	},
 
 	computeDistanceMeters: function(src, dest) {
