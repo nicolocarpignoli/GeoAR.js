@@ -62,16 +62,16 @@ AFRAME.registerComponent('gps-camera-position', {
 			longitude: this.currentCoords.longitude,
 			latitude: this.originCoords.latitude,
 		};
-		const xDistance = this.computeDistanceMeters(this.originCoords, dstCoords);
-		position.x = xDistance * (this.currentCoords.longitude > this.originCoords.longitude ? 1 : -1);
+		position.x = this.computeDistanceMeters(this.originCoords, dstCoords);
+		position.x *= this.currentCoords.longitude > this.originCoords.longitude ? 1 : -1;
 
 		// compute position.z
 		var dstCoords = {
 			longitude: this.originCoords.longitude,
 			latitude: this.currentCoords.latitude,
 		}
-		zDistance = this.computeDistanceMeters(this.originCoords, dstCoords);
-		position.z = zDistance * (this.currentCoords.latitude > this.originCoords.latitude ? -1 : 1);
+		position.z = this.computeDistanceMeters(this.originCoords, dstCoords);
+		position.z *= this.currentCoords.latitude > this.originCoords.latitude ? -1 : 1;
 
 		// update position
         this.el.setAttribute('position', position);
@@ -87,8 +87,8 @@ AFRAME.registerComponent('gps-camera-position', {
         // ~~nicolocarpignoli follows black magic!
 		var a = (Math.sin(dlatitude / 2) * Math.sin(dlatitude / 2)) + Math.cos(THREE.Math.degToRad(src.latitude)) * Math.cos(THREE.Math.degToRad(dest.latitude)) * (Math.sin(dlongitude / 2) * Math.sin(dlongitude / 2));
 		var angle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        // ~~nicolocarpignoli "magical constants" anyone? have to investigate
-        return angle * 6378160;
+		const distance = angle * 6378160;
+		
+		return distance;
 	},
 });
