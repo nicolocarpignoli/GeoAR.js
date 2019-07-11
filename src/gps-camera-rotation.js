@@ -27,7 +27,8 @@ AFRAME.registerComponent('gps-camera-rotation', {
 	},
 
 	remove: function () {
-		var eventName = this._getDeviceOrientationEventName();
+        var eventName = this._getDeviceOrientationEventName();
+        console.log(eventName)
 		window.removeEventListener(eventName, this._onDeviceOrientation, false);
 	},
 
