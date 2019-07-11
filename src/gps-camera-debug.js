@@ -8,7 +8,7 @@ let origin_coords_longitude;
 let camera_p_x;
 let camera_p_z;
 
-AFRAME.registerComponent('rotation-reader', {
+AFRAME.registerComponent('gps-camera-debug', {
     init: function () {
         // initialize
         var domElement = document.createElement('div');
