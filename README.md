@@ -1,4 +1,4 @@
-# Location Based AR.js
+# GeoAR.js
 
 ## Overview
 
