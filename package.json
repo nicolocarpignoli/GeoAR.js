@@ -1,8 +1,7 @@
 {
-  "name": "location-based-ar",
+  "name": "geo-arjs",
   "version": "1.0.0",
   "description": "",
-  "directories": {},
   "scripts": {
     "build": "rna build --production",
     "watch": "rna build --watch",
@@ -12,9 +11,9 @@
     "prepublish": "yarn run build"
   },
   "license": "MIT",
-  "author": "",
+  "author": "Nicolò Carpignoli",
   "repository": {
     "type": "git",
-    "url": "git@github.com:nicolocarpignoli/location-based-ar.git"
+    "url": "git@github.com:nicolocarpignoli/GeoAR.js.git"
   }
 }
