@@ -48,8 +48,8 @@ AFRAME.registerComponent('gps-camera-debug', {
             compass_heading.innerText = compassRotation.heading.toFixed(2);
         }
 
-        camera_p_x.innerText = position.x;
-        camera_p_z.innerText = position.z;
+        camera_p_x.innerText = position.x.toFixed(6);
+        camera_p_z.innerText = position.z.toFixed(6);
 
         var gpsPosition = this.el.components['gps-camera-position'];
         if (gpsPosition) {
@@ -67,7 +67,7 @@ AFRAME.registerComponent('gps-camera-debug', {
 });
 
 function buildCameraDebugUI() {
-    return `<div class="debug" style="font-size: 0.5em; position: fixed; top: 10px; left: 5px; width:100%; text-align: center; z-index: 1; color: limegreen">
+    return `<div class="debug" style="font-size: 0.75em; position: fixed; bottom: 20px; left: 10px; width:100%; z-index: 1; color: limegreen">
 			<div>
 				current lng/lat coords: <span id="current_coords_longitude"></span>, <span id="current_coords_latitude"></span>
 			</div>
@@ -76,7 +76,7 @@ function buildCameraDebugUI() {
 			</div>
 			<div>
 				camera 3d position: <span id="camera_p_x"></span>, <span id="camera_p_z"></span>
-			<div>
+			<div style="margin-bottom: 1.5em">
 				compass heading: <div id="compass_heading">no value</div>
 				camera angle: <div id="camera_angle">no value</div>
 				yaw angle: <div id="yaw_angle">no value</div>
