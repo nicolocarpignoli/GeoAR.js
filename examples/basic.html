@@ -1,0 +1,28 @@
+<script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+<script src='https://rawcdn.githack.com/jeromeetienne/AR.js/2850c2bbda7bb6f2c4e5f8571ac0c936e49faa4b/aframe/build/aframe-ar.min.js'></script>
+
+<!-- include gps-ar.js -->
+<script src="../src/gps-camera-debug.js"></script>
+<script src="../src/gps-camera-position.js"></script>
+<script src="../src/gps-camera-rotation.js"></script>
+<script src="../src/gps-entity-place.js"></script>
+
+<script src="./places.js"></script>
+
+<body style='margin: 0; overflow: hidden;'>
+	<a-scene
+		embedded
+		arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+
+        <!-- Dynamically add points of interest as a-box from Javascript script -->
+
+        <a-camera
+            id="camera"
+            user-height="1.6"
+            gps-camera-position
+            gps-camera-rotation
+            rotation-reader
+            gps-camera-debug>
+		</a-camera>
+	</a-scene>
+</body>

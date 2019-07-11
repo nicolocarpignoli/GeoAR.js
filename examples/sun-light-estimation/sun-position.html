@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<script src="vendor/suncalc.js" charset="utf-8"></script>
+<body>
+<script type="text/javascript">
+	var losAngelesPosition = {
+		latitude: 34.0522,
+		longitude: 118.2437, 
+	}
+	var dublinPosition = {
+		latitude: 53.342774899999995,
+		longitude: -6.238658, 
+	}
+
+
+	// var latitude = 51.5
+	// var longitude = -0.1
+	// // get today's sunlight times for London
+	// var times = SunCalc.getTimes(new Date(), latitude, longitude);
+	// console.log("Current sun lights time", times)
+	// 
+	// 
+	// var sunPosition = SunCalc.getPosition(times.sunrise, latitude, longitude)
+	// console.log("Current sun position", sunPosition, 'at sunrise', times.sunrise)
+	
+	
+	//////////////////////////////////////////////////////////////////////////////
+	//		Code Separator
+	//////////////////////////////////////////////////////////////////////////////
+
+	var solarTimes = SunCalc.getTimes(new Date(), dublinPosition.latitude, dublinPosition.longitude);
+	console.log('dublin today solarTimes', solarTimes)
+
+	// get dynamic location
+	// navigator.geolocation.getCurrentPosition(function onSuccess(position){
+	// 	var latitude = position.coords.latitude
+	// 	var longitude = position.coords.longitude.
+	// 	var time = new Date()
+	// 	processTimePosition(time, latitude, longitude)
+	// }, function onError(){
+	// 	console.log('Error', arguments)
+	// }, {
+	// 	enableHighAccuracy: true,
+	// 	timeout: 25000,
+	// 	maximumAge: 0
+	// })
+	
+	// var presentTime = new Date()
+	// processTimePosition(presentTime, dublinPosition.latitude, dublinPosition.longitude)
+
+
+	for(var hour = 0; hour < 24; hour++){
+		// var timeAndDate = new Date('Sun Oct 29 2017 '+hour+':00:00 GMT+0000 (GMT)')
+		// processTimePosition(timeAndDate, dublinPosition.latitude, dublinPosition.longitude)		
+
+		var timeAndDate = new Date('Sun Oct 29 2017 '+hour+':00:00 GMT+0800 (GMT)')
+		processTimePosition(timeAndDate, losAngelesPosition.latitude, losAngelesPosition.longitude)		
+	}
+
+	// var timeAndDate = new Date('Sun Oct 29 2017 13:09:52 GMT+0000 (GMT)')
+	// console.dir(timeAndDate)
+	// processTimePosition(timeAndDate, dublinPosition.latitude, dublinPosition.longitude)
+	// var solarTimes = SunCalc.getTimes(timeAndDate, dublinPosition.latitude, dublinPosition.longitude);
+	// processTimePosition(solarTimes.solarNoon, dublinPosition.latitude, dublinPosition.longitude)
+
+	// var timesTmp = SunCalc.getTimes(new Date(), dublinPosition.latitude, dublinPosition.longitude);
+	// processTimePosition(timesTmp.solarNoon, dublinPosition.latitude, dublinPosition.longitude)
+
+
+	// var timeAndDate = Date.parse('Sun Oct 29 2017 18:19:30 GMT+0000 (GMT)')
+	// var solarTimes = SunCalc.getTimes(timeAndDate, losAngelesPosition.latitude, losAngelesPosition.longitude);
+	// processTimePosition(solarTimes.solarNoon, losAngelesPosition.latitude, losAngelesPosition.longitude)
+	
+// 	
+// suncalc
+// north = 180
+// south = 0
+// east = 90
+// west = 
+// 
+// real
+// north = 0
+// south = 180
+
+
+	
+	function processTimePosition(timeAndDate, latitude, longitude){
+
+		var sunPosition = SunCalc.getPosition(timeAndDate, latitude, longitude)
+
+		var azimuth = (sunPosition.azimuth) /Math.PI*180
+		// azimuth = (azimuth + 360 ) % 360
+		var altitude = sunPosition.altitude /Math.PI*180
+		// altitude = (altitude + 360 ) % 90
+		
+		// var azimuth
+		console.log("Sun azimuth", azimuth.toFixed(2)+'deg, altitude', altitude.toFixed(2)+'deg', 'at', timeAndDate)
+	}
+	
+</script>
+
+</body>

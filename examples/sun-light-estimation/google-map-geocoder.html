@@ -1,0 +1,22 @@
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDJaP6fXL2sPYZBZBDAPOWwYPj1M95m2SY&callback=initMap'></script>
+<script>
+function initMap(){
+	var address = 'barranquilla colombia'
+	var address = 'Los Angeles, USA'
+	var address = 'greenwich, UK'
+	var address = 'Paris, france'
+	var address = 'Dublin, ireland'
+
+	// doc at https://developers.google.com/maps/documentation/javascript/3.exp/reference#Geocoder
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({
+		'address': address
+	}, function( results, status ){
+		if( status !== google.maps.GeocoderStatus.OK)	return
+
+		var latitude = results[0].geometry.location.lat();
+		var longitude = results[0].geometry.location.lng();
+		console.log('lat:', latitude, 'lng', longitude)
+	})
+}
+</script>

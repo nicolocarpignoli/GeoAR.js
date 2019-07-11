@@ -1,0 +1,20 @@
+{
+  "name": "location-based-ar",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {},
+  "scripts": {
+    "build": "rna build --production",
+    "watch": "rna build --watch",
+    "test": "rna lint + unit",
+    "lint": "rna lint",
+    "start": "yarn install --ignore-scripts && rna build --watch",
+    "prepublish": "yarn run build"
+  },
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nicolocarpignoli/location-based-ar.git"
+  }
+}
