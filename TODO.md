@@ -1,9 +1,9 @@
 ### Enhancements
-
 ~~nicolocarpignoli
 
-- Add UX/UI and messages when location is not granted by the user (events for that should be available as for camera permissions on AR.js)
-- Add UX/UI and messages when location data is not available or very poor signals (is there any events for that?)
+- Do not update entity (place) position if there is too much difference between consequential user GPS positions (i.e. gps signal is not so stable, so if position is changing a lot in 1-2 seconds, do not consider that --> this may cause problems if user is in a car or some kind of fast moving transport?)
+- Add UX/UI and messages when gps access is not granted by the user (events for that should be available as for camera permissions on AR.js)
+- Add UX/UI and messages when gps data is not available or there's very poor signal (is there any events for that?)
 - ...
 
 
