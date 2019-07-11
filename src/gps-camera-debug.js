@@ -7,12 +7,10 @@ let origin_coords_latitude;
 let origin_coords_longitude;
 let camera_p_x;
 let camera_p_z;
-let camera;
 
 AFRAME.registerComponent('rotation-reader', {
     init: function () {
         // initialize
-        camera = this.el;
         var domElement = document.createElement('div');
         domElement.innerHTML = buildCameraDebugUI();
         document.body.appendChild(domElement);
@@ -33,8 +31,8 @@ AFRAME.registerComponent('rotation-reader', {
         const rotation = this.el.getAttribute('rotation');
         const position = this.el.getAttribute('position');
 
-        var compassRotation = camera.components['gps-camera-rotation'];
-        var lookControls = camera.components['look-controls'];
+        var compassRotation = this.el.components['gps-camera-rotation'];
+        var lookControls = this.el.components['look-controls'];
         camera_angle.innerText = rotation.y.toFixed(2);
 
         // update UI components data to see debug data on screen
@@ -49,7 +47,7 @@ AFRAME.registerComponent('rotation-reader', {
         camera_p_x.innerText = position.x;
         camera_p_z.innerText = position.z;
 
-        var gpsPosition = camera.components['gps-camera-position'];
+        var gpsPosition = this.el.components['gps-camera-position'];
         if (gpsPosition) {
             if (gpsPosition.currentCoords) {
                 current_coords_longitude.innerText = gpsPosition.currentCoords.longitude.toFixed(6);
@@ -75,9 +73,9 @@ function buildCameraDebugUI() {
 			<div>
 				camera 3d position: <span id="camera_p_x"></span>, <span id="camera_p_z"></span>
 			<div>
-				compass heading: <div id="comspanass_heading"></div>,
-				camera angle: <div id="camera_angle"></div>,
-				yaw angle: <div id="yaw_angle"></div>
+				compass heading: <div id="compass_heading">no value</div>
+				camera angle: <div id="camera_angle">no value</div>
+				yaw angle: <div id="yaw_angle">no value</div>
 			</div>
 		</div>`;
 }
