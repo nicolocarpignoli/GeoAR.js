@@ -14,12 +14,12 @@ const PLACES = [
 ];
 
 
-window.on('load', () => {
+window.onload =  () => {
     const scene = document.querySelector('a-scene');
     PLACES.forEach((place) => {
         const box = document.createElement('a-box');
         box.setAttribute('gps-entity-place', `latitude: ${place.latitude}; longitude: ${place.longitude};`);
-        box.setAttribute('color', placemarkColor);
+        box.setAttribute('color', place.placemarkColor);
         scene.appendChild(box);
     });
-});
+};

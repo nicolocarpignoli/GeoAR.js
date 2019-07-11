@@ -6,7 +6,7 @@ AFRAME.registerComponent('gps-camera-rotation', {
 
 	init: function () {
 
-		if(this.el.components['look-controls'] === undefined) {
+		if (this.el.components['look-controls'] === undefined) {
             return;
         }
 
@@ -16,16 +16,10 @@ AFRAME.registerComponent('gps-camera-rotation', {
 		var eventName = this._getDeviceOrientationEventName();
 		this._onDeviceOrientation = this._onDeviceOrientation.bind(this);
 		window.addEventListener(eventName, this._onDeviceOrientation, false);
-
-		window.addEventListener('compassneedscalibration', function(event) {
-			alert('Your compass needs calibrating! Wave your device in a figure-eight motion');  // ~~nicolocarpignoli what?
-			event.preventDefault();
-		}, true)
-
 	},
 
-	tick: function(time, timeDelta) {
-		if(this.heading === null) {
+	tick: function() {
+		if (this.heading === null) {
             return;
         }
 
@@ -37,15 +31,17 @@ AFRAME.registerComponent('gps-camera-rotation', {
 		window.removeEventListener(eventName, this._onDeviceOrientation, false);
 	},
 
+    // it depends on browser
 	_getDeviceOrientationEventName: function() {
-		if('ondeviceorientationabsolute' in window) {
+		if ('ondeviceorientationabsolute' in window) {
 			var eventName = 'deviceorientationabsolute'
-		}else if('ondeviceorientation' in window){
+		} else if ('ondeviceorientation' in window){
 			var eventName = 'deviceorientation'
-		}else{
+		} else {
 			var eventName = ''
 			console.error('Compass not supported')
-		}
+        }
+
 		return eventName
 	},
 

@@ -84,11 +84,11 @@ AFRAME.registerComponent('gps-camera-position', {
 		var dlongitude = THREE.Math.degToRad(dest.longitude - src.longitude);
 		var dlatitude = THREE.Math.degToRad(dest.latitude - src.latitude);
 
-        // follows black magic!
+        // ~~nicolocarpignoli follows black magic!
 		var a = (Math.sin(dlatitude / 2) * Math.sin(dlatitude / 2)) + Math.cos(THREE.Math.degToRad(src.latitude)) * Math.cos(THREE.Math.degToRad(dest.latitude)) * (Math.sin(dlongitude / 2) * Math.sin(dlongitude / 2));
 		var angle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        // "magical constants" anyone? have to investigate
+        // ~~nicolocarpignoli "magical constants" anyone? have to investigate
         return angle * 6378160;
 	},
 });

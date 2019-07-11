@@ -48,17 +48,17 @@ AFRAME.registerComponent('rotation-reader', {
 
         camera_p_x.innerText = position.x;
         camera_p_z.innerText = position.z;
-        var gpsPosition = camera.components['gps-camera-position'];
 
+        var gpsPosition = camera.components['gps-camera-position'];
         if (gpsPosition) {
             if (gpsPosition.currentCoords) {
-                current_coords_longitude.innerText = gpsPosition.currentCoords.longitude;
-                current_coords_latitude.innerText = gpsPosition.currentCoords.latitude;
+                current_coords_longitude.innerText = gpsPosition.currentCoords.longitude.toFixed(6);
+                current_coords_latitude.innerText = gpsPosition.currentCoords.latitude.toFixed(6);
             }
 
             if (gpsPosition.originCoords) {
-                origin_coords_longitude.innerText = gpsPosition.originCoords.longitude;
-                origin_coords_latitude.innerText = gpsPosition.originCoords.latitude;
+                origin_coords_longitude.innerText = gpsPosition.originCoords.longitude.toFixed(6);
+                origin_coords_latitude.innerText = gpsPosition.originCoords.latitude.toFixed(6);
             }
         }
     }
@@ -75,9 +75,9 @@ function buildCameraDebugUI() {
 			<div>
 				camera 3d position: <span id="camera_p_x"></span>, <span id="camera_p_z"></span>
 			<div>
-				compass heading: <span id="comspanass_heading"></span>,
-				camera angle: <span id="camera_angle"></span>,
-				yaw angle: <span id="yaw_angle"></span>
+				compass heading: <div id="comspanass_heading"></div>,
+				camera angle: <div id="camera_angle"></div>,
+				yaw angle: <div id="yaw_angle"></div>
 			</div>
 		</div>`;
 }
