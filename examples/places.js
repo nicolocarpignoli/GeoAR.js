@@ -1,4 +1,4 @@
-// if getting places by hardcoded data
+// getting places by hardcoded data
 const PLACES = [
     {
         name: "Piazza Maggiore",
@@ -26,19 +26,27 @@ const PLACES = [
     },
 ];
 
-// if getting places from REST APIs
+// getting places from REST APIs
 function loadPlaceFromAPIs() {
     const params = {
-        lat: 44.496684,
+        lat: 44.496684, // origin coordinates: change that with current user location, dynamically
         lng: 11.320247,
-        clientId: 'your client id',
+        radius: 150,    // search places less far than this values (in meters)
+        clientId: 'your client id', 
         clientSecret: 'your client secret',
-        radius: 150,
+        version: '20300101',    // foursquare versioning, required but unuseful for this demo
     };
 
+    // to avoid CORS problems
     const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    
     // Foursquare API
-    const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin&ll=${params.lat},${params.lng}&radius=${params.radius}&client_id=${params.clientId}&client_secret=${params.clientSecret}&v=20300101`;
+    const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin
+        &ll=${params.lat},${params.lng}
+        &radius=${params.radius}
+        &client_id=${params.clientId}
+        &client_secret=${params.clientSecret}
+        &v=${param.version}`;
     return fetch(endpoint)
         .then((res) => {
             return res.json()
@@ -57,12 +65,22 @@ window.onload =  () => {
     loadPlaceFromAPIs()
         .then((places) => {
             places.forEach((place) => {
-                const element = document.createElement('a-text');
                 const latitude = place.location.lat;
                 const longitude = place.location.lng;
-                element.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                element.setAttribute('value', place.name);
-                scene.appendChild(element);
+                
+                // TODO find a better place to locate icon & text at same location
+
+                // add text with place name
+                const text = document.createElement('a-text');
+                text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                text.setAttribute('value', place.name);
+                scene.appendChild(text);
+
+                // add place icon
+                const icon = document.createElement('a-image');
+                icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                icon.setAttribute('src', 'assets/place_icon.png');
+                scene.appendChild(icon);
             });
         })
 };
