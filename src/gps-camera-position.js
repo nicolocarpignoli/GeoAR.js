@@ -12,7 +12,7 @@ AFRAME.registerComponent('gps-camera-position', {
 
 	init: function () {
 		this._watchPositionId = this._initWatchGPS(function (position) {
-			this.currentCoords = position.coords;
+            this.currentCoords = position.coords;
 			this._updatePosition();
 		}.bind(this));
 	},

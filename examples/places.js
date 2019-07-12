@@ -19,6 +19,22 @@ const PLACES = [
     },
 ];
 
+const originCoordinates = '44.492391,11.325029';
+const googleAPIParams = {
+    key: '<your-key>',
+    location: originCoordinates,
+    radius: 500,
+};
+
+function loadPlaceFromGoogleAPIS(params) {
+    const endpoint = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`;
+    fetch(endpoint)
+        .then((res) => {
+
+        })
+        .catch((err) => console.error('Error fetching Google APIs', err));
+};
+
 
 window.onload =  () => {
     const scene = document.querySelector('a-scene');
@@ -29,4 +45,5 @@ window.onload =  () => {
         box.setAttribute('name', place.name);
         scene.appendChild(box);
     });
+    loadPlaceFromGoogleAPIS(googleAPIParams);
 };
