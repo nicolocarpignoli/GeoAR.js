@@ -52,7 +52,7 @@ AFRAME.registerComponent('gps-camera-position', {
         }
 
 		if (!this.originCoords) {
-            this.originCoords = this.currentCoords;
+			this.originCoords = this.currentCoords;
         }
 
 		var position = this.el.getAttribute('position');

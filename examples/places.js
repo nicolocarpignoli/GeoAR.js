@@ -27,22 +27,20 @@ const PLACES = [
 ];
 
 // getting places from REST APIs
-function loadPlaceFromAPIs() {
+function loadPlaceFromAPIs(position) {
     const params = {
-        lat: 44.496684, // origin coordinates: change that with current user location, dynamically
-        lng: 11.320247,
-        radius: 150,    // search places less far than this values (in meters)
-        clientId: 'your client id', 
-        clientSecret: 'your client secret',
+        radius: 150,    // search places not farther than this value (in meters)
+        clientId: '', 
+        clientSecret: '',
         version: '20300101',    // foursquare versioning, required but unuseful for this demo
     };
 
-    // to avoid CORS problems
+    // CORS Proxy to avoid CORS problems
     const corsProxy = 'https://cors-anywhere.herokuapp.com/';
     
     // Foursquare API
     const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin
-        &ll=${params.lat},${params.lng}
+        &ll=${position.latitude},${position.longitude}
         &radius=${params.radius}
         &client_id=${params.clientId}
         &client_secret=${params.clientSecret}
@@ -62,25 +60,39 @@ function loadPlaceFromAPIs() {
 
 window.onload =  () => {
     const scene = document.querySelector('a-scene');
-    loadPlaceFromAPIs()
-        .then((places) => {
-            places.forEach((place) => {
-                const latitude = place.location.lat;
-                const longitude = place.location.lng;
-                
-                // TODO find a better place to locate icon & text at same location
 
-                // add text with place name
-                const text = document.createElement('a-text');
-                text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                text.setAttribute('value', place.name);
-                scene.appendChild(text);
+    // first get current user location
+    return navigator.geolocation.watchPosition(function (position) {
+        const position = position.coords;
 
-                // add place icon
-                const icon = document.createElement('a-image');
-                icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                icon.setAttribute('src', 'assets/place_icon.png');
-                scene.appendChild(icon);
-            });
+        // than use it to load from remote APIs some places nearby
+        loadPlaceFromAPIs(position)
+            .then((places) => {
+                places.forEach((place) => {
+                    const latitude = place.location.lat;
+                    const longitude = place.location.lng;
+                    
+                    // TODO find a better place to locate AFRAME icon & text at same location
+
+                    // add text with place name
+                    const text = document.createElement('a-text');
+                    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    text.setAttribute('value', place.name);
+                    scene.appendChild(text);
+
+                    // add place icon
+                    const icon = document.createElement('a-image');
+                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    icon.setAttribute('src', 'assets/place_icon.png');
+                    scene.appendChild(icon);
+                });
         })
+        }, 
+        (err) => console.error('Error in retrieving position', err), 
+        {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 27000,
+        }
+    );
 };
