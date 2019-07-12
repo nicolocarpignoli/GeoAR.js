@@ -49,8 +49,9 @@ AFRAME.registerComponent('gps-entity-place', {
             latitude: this._cameraGpsPosition.originCoords.latitude,
         };
 
-        const xDistance = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
-        position.x = xDistance * (this.data.longitude > this._cameraGpsPosition.originCoords.longitude ? 1 : -1);
+        position.x = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
+        const positionXDebug = position.x;
+        position.x *= this.data.longitude > this._cameraGpsPosition.originCoords.longitude ? 1 : -1;
 
         // update position.z
         var dstCoords = {
@@ -58,8 +59,8 @@ AFRAME.registerComponent('gps-entity-place', {
             latitude: this.data.latitude,
         };
 
-        const zDistance = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
-        position.z = zDistance * (this.data.latitude > this._cameraGpsPosition.originCoords.latitude ? -1 : 1);
+        position.z = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
+		position.z *= this.data.latitude > this._cameraGpsPosition.originCoords.latitude ? -1 : 1;
 
         // update element's position in 3D world
         this.el.setAttribute('position', position);
@@ -67,7 +68,7 @@ AFRAME.registerComponent('gps-entity-place', {
         // only for debug
         const setDebugData = function(element, interval) {
             document.querySelectorAll('.debug-distance').forEach((el) => {
-                const distance = formatDistance(xDistance);
+                const distance = formatDistance(positionXDebug);
                 if (element.getAttribute('name') == el.getAttribute('name')) {
                     el.innerHTML = `${el.getAttribute('name')}: ${distance} far`;
                 }
@@ -78,11 +79,11 @@ AFRAME.registerComponent('gps-entity-place', {
         const _deferredDebugInterval = setInterval(() => {
             setDebugData(this.el, _deferredDebugInterval);
         }, 1000);
-
     }
 });
 
 function formatDistance(distance) {
+    console.log(distance)
     distance = distance.toFixed(0);
 
     if (distance >= 1000) {

@@ -17,6 +17,12 @@ const PLACES = [
         longitude: 11.324330,
         placemarkColor: "blue",
     },
+    {
+        name: "Plumetis",
+        latitude: 44.492493,
+        longitude: 11.325399,
+        placemarkColor: "pink",
+    },
 ];
 
 const originCoordinates = '44.492391,11.325029';

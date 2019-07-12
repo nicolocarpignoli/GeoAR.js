@@ -91,6 +91,7 @@ function buildDistancesDebugUI(_deferredSelector) {
         debugDiv.classList.add('debug-distance');
         debugDiv.innerHTML = box.getAttribute('name');
         debugDiv.setAttribute('name', box.getAttribute('name'));
+        debugDiv.style.color = box.getAttribute('color');
         div.appendChild(debugDiv);
     });
 
