@@ -1,3 +1,4 @@
+// if getting places by hardcoded data
 const PLACES = [
     {
         name: "Piazza Maggiore",
@@ -25,31 +26,43 @@ const PLACES = [
     },
 ];
 
-const originCoordinates = '44.492391,11.325029';
-const googleAPIParams = {
-    key: '<your-key>',
-    location: originCoordinates,
-    radius: 500,
-};
+// if getting places from REST APIs
+function loadPlaceFromAPIs() {
+    const params = {
+        lat: 44.496684,
+        lng: 11.320247,
+        clientId: 'your client id',
+        clientSecret: 'your client secret',
+        radius: 150,
+    };
 
-function loadPlaceFromGoogleAPIS(params) {
-    const endpoint = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?${params}`;
-    fetch(endpoint)
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    // Foursquare API
+    const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin&ll=${params.lat},${params.lng}&radius=${params.radius}&client_id=${params.clientId}&client_secret=${params.clientSecret}&v=20300101`;
+    return fetch(endpoint)
         .then((res) => {
-
+            return res.json()
+                .then((resp) => {
+                    return resp.response.venues;
+                })
         })
-        .catch((err) => console.error('Error fetching Google APIs', err));
+        .catch((err) => {
+            console.error('Error with places API', err);
+        })
 };
 
 
 window.onload =  () => {
     const scene = document.querySelector('a-scene');
-    PLACES.forEach((place) => {
-        const box = document.createElement('a-box');
-        box.setAttribute('gps-entity-place', `latitude: ${place.latitude}; longitude: ${place.longitude};`);
-        box.setAttribute('color', place.placemarkColor);
-        box.setAttribute('name', place.name);
-        scene.appendChild(box);
-    });
-    loadPlaceFromGoogleAPIS(googleAPIParams);
+    loadPlaceFromAPIs()
+        .then((places) => {
+            places.forEach((place) => {
+                const element = document.createElement('a-text');
+                const latitude = place.location.lat;
+                const longitude = place.location.lng;
+                element.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                element.setAttribute('value', place.name);
+                scene.appendChild(element);
+            });
+        })
 };

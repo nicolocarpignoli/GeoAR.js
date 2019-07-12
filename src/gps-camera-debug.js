@@ -89,9 +89,8 @@ function buildDistancesDebugUI(_deferredSelector) {
     document.querySelectorAll('[gps-entity-place]').forEach((box) => {
         const debugDiv = document.createElement('div');
         debugDiv.classList.add('debug-distance');
-        debugDiv.innerHTML = box.getAttribute('name');
-        debugDiv.setAttribute('name', box.getAttribute('name'));
-        debugDiv.style.color = box.getAttribute('color');
+        debugDiv.innerHTML = box.getAttribute('value');
+        debugDiv.setAttribute('value', box.getAttribute('value'));
         div.appendChild(debugDiv);
     });
 

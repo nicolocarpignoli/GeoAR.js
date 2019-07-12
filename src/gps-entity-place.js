@@ -69,8 +69,8 @@ AFRAME.registerComponent('gps-entity-place', {
         const setDebugData = function(element, interval) {
             document.querySelectorAll('.debug-distance').forEach((el) => {
                 const distance = formatDistance(positionXDebug);
-                if (element.getAttribute('name') == el.getAttribute('name')) {
-                    el.innerHTML = `${el.getAttribute('name')}: ${distance} far`;
+                if (element.getAttribute('value') == el.getAttribute('value')) {
+                    el.innerHTML = `${el.getAttribute('value')}: ${distance} far`;
                 }
                 clearInterval(interval);
             });
