@@ -26,9 +26,10 @@ AFRAME.registerComponent('gps-camera-debug', {
         camera_p_x = document.querySelector('#camera_p_x');
         camera_p_z = document.querySelector('#camera_p_z');
 
+        const entity = this.el;
         const _deferredSelector = setInterval(() => {
-            buildDistancesDebugUI(_deferredSelector);
-        }, 2000);
+            buildDistancesDebugUI(_deferredSelector, entity);
+        }, 8000);
     },
     tick: function () {
         // updated rotation and position data for this thick
@@ -86,7 +87,7 @@ function buildCameraDebugUI() {
 
 function buildDistancesDebugUI(_deferredSelector) {
     const div = document.querySelector('.debug');
-    document.querySelectorAll('[gps-entity-place]').forEach((box) => {
+    document.querySelectorAll('a-text[gps-entity-place]').forEach((box) => {
         const debugDiv = document.createElement('div');
         debugDiv.classList.add('debug-distance');
         debugDiv.innerHTML = box.getAttribute('value');

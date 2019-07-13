@@ -78,12 +78,11 @@ AFRAME.registerComponent('gps-entity-place', {
 
         const _deferredDebugInterval = setInterval(() => {
             setDebugData(this.el, _deferredDebugInterval);
-        }, 1000);
+        }, 9000);
     }
 });
 
 function formatDistance(distance) {
-    console.log(distance)
     distance = distance.toFixed(0);
 
     if (distance >= 1000) {
