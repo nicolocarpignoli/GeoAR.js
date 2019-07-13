@@ -12,14 +12,15 @@
 
 <body style='margin: 0; overflow: hidden;'>
     <a-scene
+        gps-camera-debug
         vr-mode-ui="enabled: false"
 		embedded
 		arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
 
         <a-camera
+            gps-camera
             id="camera"
             user-height="1.6"
-            gps-camera="debugEnabled: true"
             rotation-reader>
 		</a-camera>
 	</a-scene>
