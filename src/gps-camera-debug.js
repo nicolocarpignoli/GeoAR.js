@@ -18,10 +18,13 @@ AFRAME.registerComponent('gps-camera-debug', {
         this.camera_p_x = document.querySelector('#camera_p_x');
         this.camera_p_z = document.querySelector('#camera_p_z');
 
-        // const entity = this.el;
-        // const _deferredSelector = setInterval(() => {
-        //     _buildDistancesDebugUI(_deferredSelector, entity);
-        // }, 8000);
+        this.placesLoadedEventHandler = () => {
+            this._buildDistancesDebugUI();
+            window.removeEventListener('places-loaded', this.placesLoadedEventHandler);
+            window.dispatchEvent(new CustomEvent('debug-ui-added'));
+        };
+
+        window.addEventListener('places-loaded', this.placesLoadedEventHandler);
     },
     tick: function () {
         const camera = document.querySelector('[gps-camera]');
@@ -86,16 +89,14 @@ AFRAME.registerComponent('gps-camera-debug', {
         const styleSheet = window.document.styleSheets[0];
         styleSheet.insertRule('span { margin-right: 0.5em; }', styleSheet.cssRules.length);
     },
-    _buildDistancesDebugUI: function(_deferredSelector) {
+    _buildDistancesDebugUI: function() {
         const div = document.querySelector('.debug');
-        document.querySelectorAll('a-text[gps-entity-place]').forEach((box) => {
+        document.querySelectorAll('a-text[gps-entity-place]').forEach((element) => {
             const debugDiv = document.createElement('div');
             debugDiv.classList.add('debug-distance');
-            debugDiv.innerHTML = box.getAttribute('value');
-            debugDiv.setAttribute('value', box.getAttribute('value'));
+            debugDiv.innerHTML = element.getAttribute('value');
+            debugDiv.setAttribute('value', element.getAttribute('value'));
             div.appendChild(debugDiv);
         });
-    
-        clearInterval(_deferredSelector);
     },
 });

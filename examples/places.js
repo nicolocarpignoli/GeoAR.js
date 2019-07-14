@@ -94,7 +94,7 @@ window.onload =  () => {
                     scene.appendChild(icon);
                 });
 
-                console.log('added all place objects');
+                window.dispatchEvent(new CustomEvent('places-loaded'));
         })
         }, 
         (err) => console.error('Error in retrieving position', err), 

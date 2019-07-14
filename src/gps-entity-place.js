@@ -18,6 +18,16 @@ AFRAME.registerComponent('gps-entity-place', {
             return;
         }
 
+        this._positionXDebug = 0;
+
+        // TODO fix meters does not show. and remove every setInterval
+        this.debugUIAddedHandler = function() {
+            this.setDebugData(this.el);
+            window.removeEventListener('debug-ui-added', this.debugUIAddedHandler);
+        };
+
+        window.addEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
+
         this._deferredInitInterval = setInterval(this._deferredInit.bind(this), 100);
     },
 
@@ -50,7 +60,7 @@ AFRAME.registerComponent('gps-entity-place', {
         };
 
         position.x = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
-        const positionXDebug = position.x;
+        this._positionXDebug = position.x;
         position.x *= this.data.longitude > this._cameraGpsPosition.originCoords.longitude ? 1 : -1;
 
         // update position.z
@@ -64,22 +74,16 @@ AFRAME.registerComponent('gps-entity-place', {
 
         // update element's position in 3D world
         this.el.setAttribute('position', position);
+    },
 
-        // only for debug
-        const setDebugData = function(element, interval) {
-            document.querySelectorAll('.debug-distance').forEach((el) => {
-                const distance = formatDistance(positionXDebug);
-                if (element.getAttribute('value') == el.getAttribute('value')) {
-                    el.innerHTML = `${el.getAttribute('value')}: ${distance} far`;
-                }
-                clearInterval(interval);
-            });
-        };
-
-        const _deferredDebugInterval = setInterval(() => {
-            setDebugData(this.el, _deferredDebugInterval);
-        }, 9000);
-    }
+    setDebugData: function(element) {
+        document.querySelectorAll('.debug-distance').forEach((el) => {
+            const distance = formatDistance(this._positionXDebug);
+            if (element.getAttribute('value') == el.getAttribute('value')) {
+                el.innerHTML = `${el.getAttribute('value')}: ${distance} far`;
+            }
+        });
+    },
 });
 
 function formatDistance(distance) {
