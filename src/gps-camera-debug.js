@@ -21,7 +21,9 @@ AFRAME.registerComponent('gps-camera-debug', {
         this.placesLoadedEventHandler = () => {
             this._buildDistancesDebugUI();
             window.removeEventListener('places-loaded', this.placesLoadedEventHandler);
-            window.dispatchEvent(new CustomEvent('debug-ui-added'));
+            setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('debug-ui-added'));
+            }, 500)
         };
 
         window.addEventListener('places-loaded', this.placesLoadedEventHandler);

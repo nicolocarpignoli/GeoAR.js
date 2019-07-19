@@ -13,20 +13,20 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 
     init: function () {
-        // TODO use a ._initialized = true instead
-        if (this._deferredInit()){
-            return;
-        }
-
-        this._positionXDebug = 0;
-
-        // TODO fix meters does not show. and remove every setInterval
+        // TODO fix meters not showed. and remove every setInterval
         this.debugUIAddedHandler = function() {
             this.setDebugData(this.el);
             window.removeEventListener('debug-ui-added', this.debugUIAddedHandler);
         };
 
         window.addEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
+
+        // TODO use a ._initialized = true instead
+        if (this._deferredInit()){
+            return;
+        }
+
+        this._positionXDebug = 0;
 
         this._deferredInitInterval = setInterval(this._deferredInit.bind(this), 100);
     },

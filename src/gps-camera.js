@@ -146,7 +146,7 @@ AFRAME.registerComponent('gps-camera', {
         var a = (Math.sin(dlatitude / 2) * Math.sin(dlatitude / 2)) + Math.cos(THREE.Math.degToRad(src.latitude)) * Math.cos(THREE.Math.degToRad(dest.latitude)) * (Math.sin(dlongitude / 2) * Math.sin(dlongitude / 2));
         var angle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         const distance = angle * 6378160;
-
+        
         return distance;
     },
 
