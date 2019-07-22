@@ -6,18 +6,54 @@
 
 This is still experimental and a Work In Progress.
 The original version was working with some limitations, but now it's outdated (it was based on [aframe](https://aframe.io/) v0.6.0, now we have [aframe](https://aframe.io/) v0.9.0 version with different APIs).
-The aim is to make it working with updated dependencies and possibly better performances.
+The aim is to make it work with updated dependencies and possibly better performances, also refactoring for a more maintainable codebase.
+
 Stay tuned!
 
 For updated stuff about GeoAR.js and AR.js, [follow me](https://twitter.com/nicolocarp).
 
 ## Components
 
-*Work in progress*
+>Work In Progress
+
+### `gps-camera`
+
+This component enables the Location AR. It has to be added to the `camera` entity.
+It makes possible to handle both position and rotation of user camera and it is used to determine where the user is pointing their device.
+
+For example:
+
+```HTML
+<a-camera gps-camera rotation-reader></a-camera>
+```
+
+In addition to that, it has to be added also `rotation-reader` to handle rotation events. See [this](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
+
+
+### `gps-entity-place`
+
+This component makes every entity GPS-trackable. It gives a precise world position to the entity, so the user will see it when their phone is pointing to its position in the real world. If user is far from the entity, their will see it smaller. If it is too far, their will not see it at all.
+
+It requires latitude and longitude as a parameter (example with `a-box` aframe primitive):
+
+```HTML
+<a-box color="yellow" gps-entity-place="latitude: <your-latitude>; longitude: <your-longitude>"/>
+```
+
+### `gps-camera-debug`
+
+This component has to be added only in development environment, not production.
+It enables a debug UI, showing camera data and also the list of registered `gps-entity-place` entities, showing also distance from the user for each one.
+
+It has to be added to the `a-scene`:
+
+```HTML
+<a-scene gps-camera-debug embedded arjs='sourceType: webcam; debugUIEnabled: false;'></a-scene>
+```
 
 ## Demo
 
-*Work in progress*
+>Work In Progress
 
 The only available demo is at [examples/basic.html](examples/basic.html).
 
