@@ -14,7 +14,7 @@ DONE
 
 - Added comments and cleaned code using a more standard formatting and coding practices 
 - Refactor: merged `gps-camera-position` and `gps-camera-rotation` into one single component, interacting with `gps-entity-place`s using events. `gps-camera-debug` is now an attribute of the `a-scene`
-- Updated to last `a-frame` version, adapting code according to this
+- Updated `a-frame` to 0.9.0 version, adapting code according to this
 - Removed unuseful and confusing parts of the code
 - Added a better demo
 - Enhanced Documentation
