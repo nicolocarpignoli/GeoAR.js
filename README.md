@@ -8,9 +8,11 @@ This is still experimental and a Work In Progress.
 The original version was working with some limitations, but now it's outdated (it was based on [aframe](https://aframe.io/) v0.6.0, now we have [aframe](https://aframe.io/) v0.9.0 version with different APIs).
 The aim is to make it work with updated dependencies and possibly better performances, also refactoring for a more maintainable codebase.
 
+🚀 **[Here](./CHANGELOG.MD) you can track my updates about this project.**
+
 Stay tuned!
 
-For updated stuff about GeoAR.js and AR.js, [follow me](https://twitter.com/nicolocarp).
+For updated stuff about GeoAR.js and AR.js, you can [follow me](https://twitter.com/nicolocarp).
 
 ## Components
 

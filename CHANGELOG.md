@@ -1,7 +1,7 @@
-### Enhancements
+# Changelog v0.0.1
 ~~nicolocarpignoli
 
-TODO
+### What I want to add
 
 - Remove every setInterval interaction between aframe components
 - Add an alert also when user has not granted permissions for geolocation (for the current webapp)
@@ -10,7 +10,7 @@ TODO
 - try to integrate altitude
 - ...
 
-DONE
+### What I done so far
 
 - Added comments and cleaned code using a more standard formatting and coding practices 
 - Refactor: merged `gps-camera-position` and `gps-camera-rotation` into one single component, interacting with `gps-entity-place`s using events. `gps-camera-debug` is now an attribute of the `a-scene`
@@ -21,7 +21,7 @@ DONE
 - Added an alert message when geolocation is switched off (from Phone Settings)
 
 
-### Demo todos
+### About demos..
 
 - show something at user's location
 - show something near user's location
