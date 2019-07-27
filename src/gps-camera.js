@@ -75,6 +75,12 @@ AFRAME.registerComponent('gps-camera', {
         if (!onError) {
             onError = function (err) {
                 console.warn('ERROR(' + err.code + '): ' + err.message)
+
+                if (err.code === 1) {
+                    // User denied GeoLocation, let their know that
+                    alert('Please activate Geolocation and Refresh the page.');
+                    return;
+                }
             };
         }
 
@@ -97,7 +103,7 @@ AFRAME.registerComponent('gps-camera', {
      * @returns {void}
      */
     _updatePosition: function () {
-        // don't update if accuracy isn't good enough
+        // don't update if accuracy is not good enough
         if (this.currentCoords.accuracy > this.data.positionMinAccuracy) {
             return;
         }

@@ -1,5 +1,5 @@
 AFRAME.registerComponent('gps-entity-place', {
-    _cameraGpsPosition: null,
+    _cameraGps: null,
     _deferredInitInterval: 0,
     schema: {
         latitude: {
@@ -13,7 +13,7 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 
     init: function () {
-        // TODO fix meters not showed. and remove every setInterval
+        // TODO remove every setInterval
         this.debugUIAddedHandler = function() {
             this.setDebugData(this.el);
             window.removeEventListener('debug-ui-added', this.debugUIAddedHandler);
@@ -32,15 +32,15 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 
     _deferredInit: function () {
-        if (this._cameraGpsPosition === null) {
+        if (this._cameraGps === null) {
             var camera = document.querySelector('a-camera, [camera]');
-            if (camera.components['gps-camera-position'] === undefined) {
+            if (camera.components['gps-camera'] === undefined) {
                 return;
             }
-            this._cameraGpsPosition = camera.components['gps-camera-position'];
+            this._cameraGps = camera.components['gps-camera'];
         }
 
-        if (this._cameraGpsPosition.originCoords === null) {
+        if (this._cameraGps.originCoords === null) {
             return;
         }
 
@@ -56,21 +56,21 @@ AFRAME.registerComponent('gps-entity-place', {
         // update position.x
         var dstCoords = {
             longitude: this.data.longitude,
-            latitude: this._cameraGpsPosition.originCoords.latitude,
+            latitude: this._cameraGps.originCoords.latitude,
         };
 
-        position.x = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
+        position.x = this._cameraGps.computeDistanceMeters(this._cameraGps.originCoords, dstCoords);
         this._positionXDebug = position.x;
-        position.x *= this.data.longitude > this._cameraGpsPosition.originCoords.longitude ? 1 : -1;
+        position.x *= this.data.longitude > this._cameraGps.originCoords.longitude ? 1 : -1;
 
         // update position.z
         var dstCoords = {
-            longitude: this._cameraGpsPosition.originCoords.longitude,
+            longitude: this._cameraGps.originCoords.longitude,
             latitude: this.data.latitude,
         };
 
-        position.z = this._cameraGpsPosition.computeDistanceMeters(this._cameraGpsPosition.originCoords, dstCoords);
-		position.z *= this.data.latitude > this._cameraGpsPosition.originCoords.latitude ? -1 : 1;
+        position.z = this._cameraGps.computeDistanceMeters(this._cameraGps.originCoords, dstCoords);
+		position.z *= this.data.latitude > this._cameraGps.originCoords.latitude ? -1 : 1;
 
         // update element's position in 3D world
         this.el.setAttribute('position', position);

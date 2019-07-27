@@ -71,19 +71,15 @@ window.onload =  () => {
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
                     
-                    // TODO find a better place to locate AFRAME icon & text at same location
-
                     // add text with place name
                     const text = document.createElement('a-text');
                     text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     text.setAttribute('value', place.name);
-                    scene.appendChild(text);
+                    text.setAttribute('color', 'red');
 
-                    // add place icon
-                    const icon = document.createElement('a-image');
-                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    icon.setAttribute('src', 'assets/place_icon.png');
-                    scene.appendChild(icon);
+                    // for debug purposes, just show in a bigger scale, otherwise I have to go personally on places...
+                    text.setAttribute('scale', '30, 30');
+                    scene.appendChild(text);
                 });
 
                 window.dispatchEvent(new CustomEvent('places-loaded'));

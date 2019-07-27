@@ -93,7 +93,7 @@ AFRAME.registerComponent('gps-camera-debug', {
     },
     _buildDistancesDebugUI: function() {
         const div = document.querySelector('.debug');
-        document.querySelectorAll('a-text[gps-entity-place]').forEach((element) => {
+        document.querySelectorAll('[gps-entity-place]').forEach((element) => {
             const debugDiv = document.createElement('div');
             debugDiv.classList.add('debug-distance');
             debugDiv.innerHTML = element.getAttribute('value');
