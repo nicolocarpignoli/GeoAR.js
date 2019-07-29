@@ -30,20 +30,21 @@ const PLACES = [
 function loadPlaceFromAPIs(position) {
     const params = {
         radius: 300,    // search places not farther than this value (in meters)
-        clientId: 'HZIJGI4COHQ4AI45QXKCDFJWFJ1SFHYDFCCWKPIJDWHLVQVZ', 
+        clientId: 'HZIJGI4COHQ4AI45QXKCDFJWFJ1SFHYDFCCWKPIJDWHLVQVZ',
         clientSecret: '5BG42SKEZXXANBN4ZHC5XKHLDFQVSKMWUS3VXKOASMR5SNEB',
         version: '20300101',    // foursquare versioning, required but unuseful for this demo
     };
 
     // CORS Proxy to avoid CORS problems
     const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-    
+
     // Foursquare API
     const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin
         &ll=${position.latitude},${position.longitude}
         &radius=${params.radius}
         &client_id=${params.clientId}
         &client_secret=${params.clientSecret}
+        &limit=15
         &v=${params.version}`;
     return fetch(endpoint)
         .then((res) => {
@@ -58,7 +59,7 @@ function loadPlaceFromAPIs(position) {
 };
 
 
-window.onload =  () => {
+window.onload = () => {
     const scene = document.querySelector('a-scene');
 
     // first get current user location
@@ -70,22 +71,29 @@ window.onload =  () => {
                 places.forEach((place) => {
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
-                    
+
                     // add text with place name
                     const text = document.createElement('a-text');
                     text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     text.setAttribute('value', place.name);
                     text.setAttribute('color', 'red');
 
-                    // for debug purposes, just show in a bigger scale, otherwise I have to go personally on places...
+                    // add place icon
+                    const icon = document.createElement('a-image');
+                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    icon.setAttribute('src', 'assets/place_icon.png');
+                    
+                    // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
                     text.setAttribute('scale', '30, 30');
+                    icon.setAttribute('scale', '15, 15');
+                    scene.appendChild(icon);
                     scene.appendChild(text);
                 });
 
                 window.dispatchEvent(new CustomEvent('places-loaded'));
-        })
-        }, 
-        (err) => console.error('Error in retrieving position', err), 
+            })
+    },
+        (err) => console.error('Error in retrieving position', err),
         {
             enableHighAccuracy: true,
             maximumAge: 0,
