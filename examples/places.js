@@ -78,19 +78,22 @@ window.onload = () => {
                     text.setAttribute('value', place.name);
                     text.setAttribute('color', 'red');
 
+                    text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+
                     // add place icon
                     const icon = document.createElement('a-image');
                     icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     icon.setAttribute('src', 'assets/place_icon.png');
-                    
+
                     // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-                    text.setAttribute('scale', '30, 30');
-                    icon.setAttribute('scale', '15, 15');
+                    text.setAttribute('scale', '10, 10');
+                    icon.setAttribute('scale', '10, 10');
+
+                    icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+
                     scene.appendChild(icon);
                     scene.appendChild(text);
                 });
-
-                window.dispatchEvent(new CustomEvent('places-loaded'));
             })
     },
         (err) => console.error('Error in retrieving position', err),

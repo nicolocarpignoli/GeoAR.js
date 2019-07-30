@@ -6,6 +6,7 @@ AFRAME.registerComponent('gps-camera-debug', {
         this.origin_coords_longitude;
         this.camera_p_x;
         this.camera_p_z;
+        this.entities = 0;
 
         // initialize
         this._buildCameraDebugUI(document.body);
@@ -19,14 +20,17 @@ AFRAME.registerComponent('gps-camera-debug', {
         this.camera_p_z = document.querySelector('#camera_p_z');
 
         this.placesLoadedEventHandler = () => {
-            this._buildDistancesDebugUI();
-            window.removeEventListener('places-loaded', this.placesLoadedEventHandler);
-            setTimeout(() => {
+            this.entities++;
+            const entities = document.querySelectorAll('[gps-entity-place]') && document.querySelectorAll('[gps-entity-place]').length || 0;
+            if (entities === this.entities) {
+                this._buildDistancesDebugUI();
+                window.removeEventListener('gps-entity-place-loaded', this.placesLoadedEventHandler.bind(this));
                 window.dispatchEvent(new CustomEvent('debug-ui-added'));
-            }, 500)
+            }
+
         };
 
-        window.addEventListener('places-loaded', this.placesLoadedEventHandler);
+        window.addEventListener('gps-entity-place-loaded', this.placesLoadedEventHandler.bind(this));
     },
     tick: function () {
         const camera = document.querySelector('[gps-camera]');

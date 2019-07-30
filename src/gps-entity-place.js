@@ -1,6 +1,5 @@
 AFRAME.registerComponent('gps-entity-place', {
     _cameraGps: null,
-    _deferredInitInterval: 0,
     schema: {
         latitude: {
             type: 'number',
@@ -13,25 +12,13 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 
     init: function () {
-        // TODO remove every setInterval
         this.debugUIAddedHandler = function() {
             this.setDebugData(this.el);
-            window.removeEventListener('debug-ui-added', this.debugUIAddedHandler);
+            window.removeEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
         };
 
         window.addEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
 
-        // TODO use a ._initialized = true instead
-        if (this._deferredInit()){
-            return;
-        }
-
-        this._positionXDebug = 0;
-
-        this._deferredInitInterval = setInterval(this._deferredInit.bind(this), 100);
-    },
-
-    _deferredInit: function () {
         if (this._cameraGps === null) {
             var camera = document.querySelector('a-camera, [camera]');
             if (camera.components['gps-camera'] === undefined) {
@@ -44,8 +31,6 @@ AFRAME.registerComponent('gps-entity-place', {
             return;
         }
 
-        clearInterval(this._deferredInitInterval);
-        this._deferredInitInterval = 0;
         this._updatePosition();
         return true;
     },
@@ -77,7 +62,8 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 
     setDebugData: function(element) {
-        document.querySelectorAll('.debug-distance').forEach((el) => {
+        const elements =  document.querySelectorAll('.debug-distance');
+        elements.forEach((el) => {
             const distance = formatDistance(this._positionXDebug);
             if (element.getAttribute('value') == el.getAttribute('value')) {
                 el.innerHTML = `${el.getAttribute('value')}: ${distance} far`;
