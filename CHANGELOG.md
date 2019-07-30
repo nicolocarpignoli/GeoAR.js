@@ -3,6 +3,7 @@
 
 ### What I want to add
 
+- Fix text added to places ONLY when places are rear the user position (i.e. for places in front of user initial position, places have only icon, otherwise text+icon)
 - Remove every setInterval interaction between aframe components
 - Add an alert also when user has not granted permissions for geolocation (for the current webapp)
 - Do not update entity (place) position if there is too much difference between consequential user GPS positions (i.e. gps signal is not so stable, so if position is changing a lot in 1-2 seconds, do not consider that --> this may cause problems if user is in a car or some kind of fast moving transport?)
@@ -12,7 +13,7 @@
 
 ### What I done so far
 
-- Added comments and cleaned code using a more standard formatting and coding practices 
+- Added comments and cleaned code using a more standard formatting and coding practices
 - Refactor: merged `gps-camera-position` and `gps-camera-rotation` into one single component, interacting with `gps-entity-place`s using events. `gps-camera-debug` is now an attribute of the `a-scene`
 - Updated `a-frame` to 0.9.0 version, adapting code according to this
 - Removed unuseful and confusing parts of the code
