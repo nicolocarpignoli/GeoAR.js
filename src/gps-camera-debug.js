@@ -19,7 +19,7 @@ AFRAME.registerComponent('gps-camera-debug', {
         this.camera_p_x = document.querySelector('#camera_p_x');
         this.camera_p_z = document.querySelector('#camera_p_z');
 
-        this.placesLoadedEventHandler = () => {
+        this.placesLoadedEventHandler = function() {
             this.entities++;
             const entities = document.querySelectorAll('[gps-entity-place]') && document.querySelectorAll('[gps-entity-place]').length || 0;
             if (entities === this.entities) {
@@ -27,7 +27,6 @@ AFRAME.registerComponent('gps-camera-debug', {
                 window.removeEventListener('gps-entity-place-loaded', this.placesLoadedEventHandler.bind(this));
                 window.dispatchEvent(new CustomEvent('debug-ui-added'));
             }
-
         };
 
         window.addEventListener('gps-entity-place-loaded', this.placesLoadedEventHandler.bind(this));

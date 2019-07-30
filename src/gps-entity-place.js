@@ -12,6 +12,8 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 
     init: function () {
+        this._positionXDebug= 0;
+
         this.debugUIAddedHandler = function() {
             this.setDebugData(this.el);
             window.removeEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
