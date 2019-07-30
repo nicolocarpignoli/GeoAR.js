@@ -30,8 +30,8 @@ const PLACES = [
 function loadPlaceFromAPIs(position) {
     const params = {
         radius: 300,    // search places not farther than this value (in meters)
-        clientId: 'HZIJGI4COHQ4AI45QXKCDFJWFJ1SFHYDFCCWKPIJDWHLVQVZ',
-        clientSecret: '5BG42SKEZXXANBN4ZHC5XKHLDFQVSKMWUS3VXKOASMR5SNEB',
+        clientId: '...',
+        clientSecret: '...',
         version: '20300101',    // foursquare versioning, required but unuseful for this demo
     };
 
