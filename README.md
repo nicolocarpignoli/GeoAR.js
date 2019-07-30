@@ -8,6 +8,8 @@ This is still experimental and a Work In Progress.
 The original version was working with some limitations, but now it's outdated (it was based on [aframe](https://aframe.io/) v0.6.0, now we have [aframe](https://aframe.io/) v0.9.0 version with different APIs).
 The aim is to make it work with updated dependencies and possibly better performances, also refactoring for a more maintainable codebase.
 
+These `aframe` components can work independently from AR.js. By the way, they are a powerful and simple system that become interesting if added to AR.js' marker based capabilities, thus making AR.js a multiple-feature-AR library.
+
 🚀 **[Here](./CHANGELOG.md) you can track my updates about this project.**
 
 Stay tuned!
