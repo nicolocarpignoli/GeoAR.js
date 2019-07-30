@@ -22,7 +22,9 @@ AFRAME.registerComponent('gps-camera-debug', {
         this.placesLoadedEventHandler = function() {
             this.entities++;
             const entities = document.querySelectorAll('[gps-entity-place]') && document.querySelectorAll('[gps-entity-place]').length || 0;
+            
             if (entities === this.entities) {
+                // all entities added, we can build debug UI
                 this._buildDistancesDebugUI();
                 window.removeEventListener('gps-entity-place-loaded', this.placesLoadedEventHandler.bind(this));
                 window.dispatchEvent(new CustomEvent('debug-ui-added'));

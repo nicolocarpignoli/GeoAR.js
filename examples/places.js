@@ -2,27 +2,24 @@
 const PLACES = [
     {
         name: "Piazza Maggiore",
-        latitude: 44.493910,
-        longitude: 11.343250,
-        placemarkColor: "red",
+        location: {
+            lat: 44.493910,
+            lng: 11.343250,
+        }
     },
     {
         name: "Due Torri",
-        latitude: 44.494660,
-        longitude: 11.347180,
-        placemarkColor: "yellow",
+        location: {
+            lat: 44.494660,
+            lng: 11.347180,
+        }
     },
     {
-        name: "Via Spataro",
-        latitude: 44.492150,
-        longitude: 11.324330,
-        placemarkColor: "blue",
-    },
-    {
-        name: "Plumetis",
-        latitude: 44.492493,
-        longitude: 11.325399,
-        placemarkColor: "pink",
+        name: "San Luca",
+        location: {
+            lat: 44.479167,
+            lng: 11.297859,
+        }
     },
 ];
 

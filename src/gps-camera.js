@@ -10,6 +10,10 @@ AFRAME.registerComponent('gps-camera', {
             type: 'int',
             default: 100,
         },
+        alert: {
+            type: 'boolean',
+            default: false,
+        },
     },
 
     init: function () {
@@ -78,7 +82,12 @@ AFRAME.registerComponent('gps-camera', {
 
                 if (err.code === 1) {
                     // User denied GeoLocation, let their know that
-                    alert('Please activate Geolocation and Refresh the page.');
+                    alert('Please activate Geolocation and refresh the page. If it is already active, please check permissions for this website.');
+                    return;
+                }
+
+                if (err.code === 3) {
+                    alert('Cannot retrieve GPS position. Signal is absent.');
                     return;
                 }
             };
@@ -106,6 +115,19 @@ AFRAME.registerComponent('gps-camera', {
         // don't update if accuracy is not good enough
         if (this.currentCoords.accuracy > this.data.positionMinAccuracy) {
             return;
+        }
+
+        if (this.data.alert && this.currentCoords.accuracy >= 1000) {
+            const popup = document.createElement('p');
+            popup.innerHTML = 'GPS signal is very poor. Try to go outdoor or in a better signal area.'
+            //TODO enhance style
+            popup.style = 'color: white; font-size: 0.75em; position: absolute; bottom: 20%; left: 50%;'
+            popup.setAttribute('id', 'alert-popup');
+            document.body.appendChild(popup);
+        }
+
+        if (this.currentCoords.accuracy < 1000 && document.getElementById('alert-popup')) {
+            document.body.removeChild(popup);
         }
         
         if (!this.originCoords) {
@@ -175,7 +197,6 @@ AFRAME.registerComponent('gps-camera', {
         // Calculate equation components
         var cA = Math.cos(alphaRad);
         var sA = Math.sin(alphaRad);
-        var cB = Math.cos(betaRad);
         var sB = Math.sin(betaRad);
         var cG = Math.cos(gammaRad);
         var sG = Math.sin(gammaRad);
