@@ -21,9 +21,3 @@
 - Added an alert message when geolocation is switched off (from Phone Settings or permission not granted)
 - Remove every setInterval interaction between aframe components, interactions are now only event based
 - Had some beers
-
-
-### About demos..
-
-- Show something at user's location
-- Show something near user's location

@@ -69,26 +69,17 @@ window.onload = () => {
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
 
-                    // add text with place name
-                    const text = document.createElement('a-text');
-                    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    text.setAttribute('value', place.name);
-                    text.setAttribute('color', 'red');
-
-                    text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
-
                     // add place icon
                     const icon = document.createElement('a-image');
                     icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    icon.setAttribute('name', place.name);
                     icon.setAttribute('src', 'assets/place_icon.png');
 
                     // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-                    text.setAttribute('scale', '10, 10');
-                    icon.setAttribute('scale', '10, 10');
+                    icon.setAttribute('scale', '20, 20');
 
                     icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
-                    scene.appendChild(text);
                     scene.appendChild(icon);
                 });
             })

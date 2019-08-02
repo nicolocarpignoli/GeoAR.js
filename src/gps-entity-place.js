@@ -10,9 +10,43 @@ AFRAME.registerComponent('gps-entity-place', {
             default: 0,
         },
     },
-
     init: function () {
         this._positionXDebug = 0;
+
+        // Adding this for debug purposes
+        // TODO remove
+
+        this.clickListener = function(ev) {
+            ev.stopPropagation();
+            ev.preventDefault();
+
+            const name = ev.target.getAttribute('name');
+            const el = ev.detail.intersection && ev.detail.intersection.object.el;
+            
+            // TODO show only one time per click. 
+            // TODO show message not in absolute but near the ev.target
+
+            if (el && el === ev.target) {
+                const label = document.createElement('span');
+                label.setAttribute('id', 'place-label');
+                label.style = 'z-index: 99999; color: white; font-size: 1.5em; padding: 0.25em;';
+                label.innerText = name;
+
+                const targetPositionLeft = ev.target.getBoundingClientRect().left;
+                const targetPositionTop = ev.target.getBoundingClientRect().top;
+
+                label.style.left = targetPositionLeft;
+                label.style.top = targetPositionTop;
+
+                document.body.appendChild(label);
+                
+                setTimeout(() => {
+                    label.parentElement.removeChild(label);
+                }, 1000);
+            }
+        };
+
+        this.el.addEventListener('click', this.clickListener.bind(this));
 
         this.debugUIAddedHandler = function() {
             this.setDebugData(this.el);
