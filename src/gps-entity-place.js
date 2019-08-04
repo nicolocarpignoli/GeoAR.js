@@ -29,7 +29,6 @@ AFRAME.registerComponent('gps-entity-place', {
             if (el && el === ev.target) {
                 const label = document.createElement('span');
                 label.setAttribute('id', 'place-label');
-                label.style = 'z-index: 99999; color: white; font-size: 1.5em; padding: 0.25em;';
                 label.innerText = name;
 
                 const targetPositionLeft = ev.target.getBoundingClientRect().left;

@@ -114,20 +114,18 @@ AFRAME.registerComponent('gps-camera', {
     _updatePosition: function () {
         // don't update if accuracy is not good enough
         if (this.currentCoords.accuracy > this.data.positionMinAccuracy) {
+            if (this.data.alert) {
+                const popup = document.createElement('div');
+                popup.innerHTML = 'GPS signal is very poor. Try move outdoor or to an area with a better signal.'
+                popup.setAttribute('id', 'alert-popup');
+                document.body.appendChild(popup);
+            }    
             return;
         }
 
-        if (this.data.alert && this.currentCoords.accuracy >= 1000) {
-            const popup = document.createElement('p');
-            popup.innerHTML = 'GPS signal is very poor. Try to go outdoor or in a better signal area.'
-            //TODO enhance style
-            popup.style = 'color: white; font-size: 0.75em; position: absolute; bottom: 20%; left: 50%;'
-            popup.setAttribute('id', 'alert-popup');
-            document.body.appendChild(popup);
-        }
-
-        if (this.currentCoords.accuracy < 1000 && document.getElementById('alert-popup')) {
-            document.body.removeChild(popup);
+        const alertPopup = document.getElementById('alert-popup');
+        if (this.currentCoords.accuracy <= this.data.positionMinAccuracy && alertPopup) {
+            document.body.removeChild(alertPopup);
         }
         
         if (!this.originCoords) {

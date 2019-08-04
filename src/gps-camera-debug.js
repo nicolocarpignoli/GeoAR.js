@@ -56,7 +56,6 @@ AFRAME.registerComponent('gps-camera-debug', {
     _buildCameraDebugUI: function(element) {
         const container = document.createElement('div');
         container.classList.add('debug');
-        container.style = 'font-size: 0.75em; position: fixed; bottom: 20px; left: 10px; width:100%; z-index: 1; color: limegreen';
 
         const currentLatLng = document.createElement('div');
         currentLatLng.innerText = 'current lng/lat coords: ';
@@ -92,9 +91,6 @@ AFRAME.registerComponent('gps-camera-debug', {
         container.appendChild(cameraDiv);
 
         element.appendChild(container);
-
-        const styleSheet = window.document.styleSheets[0];
-        styleSheet.insertRule('span { margin-right: 0.5em; }', styleSheet.cssRules.length);
     },
     _buildDistancesDebugUI: function() {
         const div = document.querySelector('.debug');

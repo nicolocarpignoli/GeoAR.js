@@ -1,0 +1,13 @@
+span { 
+    margin-right: 0.5em; 
+}
+
+div.debug {
+    font-size: 0.75em;
+    position: 'fixed';
+    bottom: 20px;
+    left: 10px;
+    width: 100%;
+    z-index: 1;
+    color: 'limegreen';
+}
