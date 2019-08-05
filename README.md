@@ -12,8 +12,6 @@ These `aframe` components can work independently from AR.js. By the way, they ar
 
 🚀 **[Here](./CHANGELOG.md) you can track my updates about this project.**
 
-Stay tuned!
-
 For updated stuff about GeoAR.js and AR.js, you can [follow me](https://twitter.com/nicolocarp).
 
 ## Components
@@ -31,15 +29,15 @@ For example:
 <a-camera gps-camera rotation-reader></a-camera>
 ```
 
+⚠️In addition to that, as you can see on the example above, we also have to add `rotation-reader` to handle rotation events. See [here](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
+
+
 ## Properties
 
 | Property   | Description | Default Value |
 |------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | alert     | Whether to show a message when GPS signal is under the `positionMinAccuracy`                  | false |                                                                                                                                                                        | true          |
 | positionMinAccuracy        | Minimum accuracy allowed for position signal    | 100 |
-
-⚠️In addition to that, we also have to add `rotation-reader` to handle rotation events. See [here](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
-
 
 ### `gps-entity-place`
 
