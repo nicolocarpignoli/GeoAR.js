@@ -75,7 +75,7 @@ It has to be added to the `a-scene`:
 
 The only available demo is at [examples/basic.html](examples/basic.html).
 
-Actually it searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials on `.examples/places.js` line 33-34.
+Actually it searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials (client secret and client id) on `.examples/places.js` line 30 or so.
 
 ## Support
 
