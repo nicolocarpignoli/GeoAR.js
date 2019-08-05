@@ -77,6 +77,14 @@ The only available demo is at [examples/basic.html](examples/basic.html).
 
 Actually it searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials on `.examples/places.js` line 33-34.
 
+## Support
+
+Tried on Huawei P20, works like charm.
+
+Problem with iPhone 6, loads all good but when rotating and moving the camera, places position are not updated and remain fixed.
+
+We need a lot of more tests, but the first impression is: the more advanced the phone (so newer) the better. This because of better quality sensors.
+
 ## Credits
 
 It is based on the discussion from this [github issue](https://github.com/jeromeetienne/AR.js/issues/190).
