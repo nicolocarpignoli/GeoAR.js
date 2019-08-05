@@ -1,27 +1,23 @@
-// getting places by hardcoded data
-const PLACES = [
-    {
-        name: "Piazza Maggiore",
-        location: {
-            lat: 44.493910,
-            lng: 11.343250,
-        }
-    },
-    {
-        name: "Due Torri",
-        location: {
-            lat: 44.494660,
-            lng: 11.347180,
-        }
-    },
-    {
-        name: "San Luca",
-        location: {
-            lat: 44.479167,
-            lng: 11.297859,
-        }
-    },
-];
+const loadPlaces = function(coords) {
+    // COMMENT FOLLOWING LINE IF YOU WANT TO USE STATIC DATA AND ADD COORDINATES IN THE FOLLOWING 'PLACES' ARRAY
+    const method = 'api';
+
+    const PLACES = [
+        {
+            name: "Your place name",
+            location: {
+                lat: 0, // add here latitude if using static data
+                lng: 0, // add here longitude if using static data
+            }
+        },
+    ];
+
+    if (method === 'api') {
+        return loadPlaceFromAPIs(coords);
+    }
+
+    return PLACES;
+};
 
 // getting places from REST APIs
 function loadPlaceFromAPIs(position) {
@@ -63,7 +59,7 @@ window.onload = () => {
     return navigator.geolocation.getCurrentPosition(function (position) {
 
         // than use it to load from remote APIs some places nearby
-        loadPlaceFromAPIs(position.coords)
+        loadPlaces(position.coords)
             .then((places) => {
                 places.forEach((place) => {
                     const latitude = place.location.lat;
