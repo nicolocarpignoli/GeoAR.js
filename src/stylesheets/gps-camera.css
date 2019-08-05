@@ -1,13 +1,13 @@
 #alert-popup {
-    padding: 0.25em;
-    display: 'block';
-    background-color: #444;
-    color: white;
-    text-align: 'center';
-    width: 80%;
-    position: 'absolute';
-    font-size: 0.75em;
+    position: absolute;
     bottom: 20%;
     left: 5%;
+    display: block;
+    width: 80%;
     margin: 1em;
+    padding: 0.25em;
+    color: white;
+    font-size: 0.75em;
+    text-align: center;
+    background-color: #444;
 }

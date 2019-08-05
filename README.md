@@ -31,6 +31,13 @@ For example:
 <a-camera gps-camera rotation-reader></a-camera>
 ```
 
+## Properties
+
+| Property   | Description | Default Value |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| alert     | Whether to show a message when GPS signal is under the `positionMinAccuracy`                  | false |                                                                                                                                                                        | true          |
+| positionMinAccuracy        | Minimum accuracy allowed for position signal    |
+
 In addition to that, we also have to add `rotation-reader` to handle rotation events. See [here](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
 
 

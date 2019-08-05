@@ -22,8 +22,8 @@ AFRAME.registerComponent('gps-entity-place', {
 
             const name = ev.target.getAttribute('name');
             const el = ev.detail.intersection && ev.detail.intersection.object.el;
-            
-            // TODO show only one time per click. 
+
+            // TODO show only one time per click.
             // TODO show message not in absolute but near the ev.target
 
             if (el && el === ev.target) {
@@ -38,7 +38,7 @@ AFRAME.registerComponent('gps-entity-place', {
                 label.style.top = targetPositionTop;
 
                 document.body.appendChild(label);
-                
+
                 setTimeout(() => {
                     label.parentElement.removeChild(label);
                 }, 1000);

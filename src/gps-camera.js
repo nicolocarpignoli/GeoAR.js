@@ -70,9 +70,9 @@ AFRAME.registerComponent('gps-camera', {
 
     /**
      * Get current user position.
-     * 
-     * @param {function} onSuccess 
-     * @param {function} onError 
+     *
+     * @param {function} onSuccess
+     * @param {function} onError
      * @returns {Promise}
      */
     _initWatchGPS: function (onSuccess, onError) {
@@ -108,18 +108,19 @@ AFRAME.registerComponent('gps-camera', {
 
     /**
      * Update user position.
-     * 
+     *
      * @returns {void}
      */
     _updatePosition: function () {
         // don't update if accuracy is not good enough
+
         if (this.currentCoords.accuracy > this.data.positionMinAccuracy) {
-            if (this.data.alert) {
+            if (this.data.alert && !document.getElementById('alert-popup')) {
                 const popup = document.createElement('div');
                 popup.innerHTML = 'GPS signal is very poor. Try move outdoor or to an area with a better signal.'
                 popup.setAttribute('id', 'alert-popup');
                 document.body.appendChild(popup);
-            }    
+            }
             return;
         }
 
@@ -127,7 +128,7 @@ AFRAME.registerComponent('gps-camera', {
         if (this.currentCoords.accuracy <= this.data.positionMinAccuracy && alertPopup) {
             document.body.removeChild(alertPopup);
         }
-        
+
         if (!this.originCoords) {
             this.originCoords = this.currentCoords;
         }
@@ -156,10 +157,10 @@ AFRAME.registerComponent('gps-camera', {
 
     /**
      * Returns distance in meters between source and destination inputs.
-     * 
-     * @param {Position} src 
-     * @param {Position} dest 
-     * 
+     *
+     * @param {Position} src
+     * @param {Position} dest
+     *
      * @returns {number} distance
      */
     computeDistanceMeters: function (src, dest) {
@@ -172,17 +173,17 @@ AFRAME.registerComponent('gps-camera', {
         var a = (Math.sin(dlatitude / 2) * Math.sin(dlatitude / 2)) + Math.cos(THREE.Math.degToRad(src.latitude)) * Math.cos(THREE.Math.degToRad(dest.latitude)) * (Math.sin(dlongitude / 2) * Math.sin(dlongitude / 2));
         var angle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         const distance = angle * 6378160;
-        
+
         return distance;
     },
 
     /**
      * Compute compass heading.
-     * 
-     * @param {number} alpha 
-     * @param {number} beta 
-     * @param {number} gamma 
-     * 
+     *
+     * @param {number} alpha
+     * @param {number} beta
+     * @param {number} gamma
+     *
      * @returns {number} compass heading
      */
     _computeCompassHeading: function (alpha, beta, gamma) {
@@ -221,8 +222,8 @@ AFRAME.registerComponent('gps-camera', {
 
     /**
      * Handler for device orientation event.
-     * 
-     * @param {Event} event 
+     *
+     * @param {Event} event
      * @returns {void}
      */
     _onDeviceOrientation: function (event) {
@@ -245,7 +246,7 @@ AFRAME.registerComponent('gps-camera', {
 
     /**
      * Update user rotation data.
-     * 
+     *
      * @returns {void}
      */
     _updateRotation: function () {
