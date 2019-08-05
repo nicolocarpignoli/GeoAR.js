@@ -20,12 +20,11 @@ For updated stuff about GeoAR.js and AR.js, you can [follow me](https://twitter.
 
 The only available demo is at [examples/basic.html](examples/basic.html).
 
-It uses the [examples/places.js](examples/place.js) script to load places. You can use that, with static data adding your coordinates
-on that script, in the first lines of code (there are comments to explain better).
+It uses the [examples/places.js](examples/place.js) script to load places. You can use that with static data using your coordinates, adding these info in the first lines of code (there are comments to explain better).
 
 Otherwise, as default, the script searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials (client secret and client id) on `examples/places.js` line 30 or so.
 
-You can also use GeoAR.js without that script, adding `gps-entity-place` entities as documentated on the following section, 
+You can also use GeoAR.js **without** the script, adding `gps-entity-place` entities as documentated on the following section, 
 putting them directly on the `basic.html` file.
 
 ## Components
