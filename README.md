@@ -20,6 +20,9 @@ For updated stuff about GeoAR.js and AR.js, you can [follow me](https://twitter.
 
 ### `gps-camera`
 
+**Required**: yes  
+**Max allowed per scene**: 1
+
 This component enables the Location AR. It has to be added to the `camera` entity.
 It makes possible to handle both position and rotation of the camera and it's used to determine where the user is pointing their device.
 
@@ -29,7 +32,7 @@ For example:
 <a-camera gps-camera rotation-reader></a-camera>
 ```
 
-⚠️In addition to that, as you can see on the example above, we also have to add `rotation-reader` to handle rotation events. See [here](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
+In addition to that, as you can see on the example above, we also have to add `rotation-reader` to handle rotation events. See [here](https://aframe.io/docs/0.9.0/components/camera.html#reading-position-or-rotation-of-the-camera) for more details.
 
 
 ### Properties
@@ -41,6 +44,9 @@ For example:
 
 ### `gps-entity-place`
 
+**Required**: yes  
+**Max allowed per scene**: no limit
+
 This component makes every entity GPS-trackable. It assignes a specific world position to the entity, so the user can see it when their phone is pointing to its position in the real world. If user is far from the entity, their will see it smaller. If it is too far, their will not see it at all.
 
 It requires latitude and longitude as a single string parameter (example with `a-box` aframe primitive):
@@ -50,6 +56,9 @@ It requires latitude and longitude as a single string parameter (example with `a
 ```
 
 ### `gps-camera-debug`
+
+**Required**: no  
+**Max allowed per scene**: 1
 
 This component has to be added only in development environments, not production ones.
 It shows a debug UI with camera informations and a list of registered `gps-entity-place` entities, showing also distance from the user for each one.
