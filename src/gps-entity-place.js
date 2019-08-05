@@ -12,7 +12,6 @@ AFRAME.registerComponent('gps-entity-place', {
     },
     init: function () {
         this._positionXDebug = 0;
-        this._listening = null;
 
         // TODO Remove this, is temporary and only for debug/demo purposes
 
@@ -22,22 +21,18 @@ AFRAME.registerComponent('gps-entity-place', {
 
             const name = ev.target.getAttribute('name');
 
-            if (this._listening && this._listening === name) {
-                return;
-            }
-            this._listening = name;
-
             const el = ev.detail.intersection && ev.detail.intersection.object.el;
 
             if (el && el === ev.target) {
                 const label = document.createElement('span');
-                label.setAttribute('id', 'place-label');
+                const container = document.createElement('div');
+                container.setAttribute('id', 'place-label');
                 label.innerText = name;
-                document.body.appendChild(label);
+                container.appendChild(label);
+                document.body.appendChild(container);
 
                 setTimeout(() => {
-                    label.parentElement.removeChild(label);
-                    this._listening = null;
+                    container.parentElement.removeChild(container);
                 }, 2000);
             }
         };
