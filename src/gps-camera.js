@@ -113,7 +113,6 @@ AFRAME.registerComponent('gps-camera', {
      */
     _updatePosition: function () {
         // don't update if accuracy is not good enough
-
         if (this.currentCoords.accuracy > this.data.positionMinAccuracy) {
             if (this.data.alert && !document.getElementById('alert-popup')) {
                 const popup = document.createElement('div');
