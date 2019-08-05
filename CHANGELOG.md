@@ -3,9 +3,8 @@
 
 ### What I want to do
 
-- Fix text added to places ONLY towards north directionm otherwise it added only icon (very strange bug)
+- Bug: only text (a-text, and not aframe primitives or a-image!) are not showed if added to places ONLY towards north directions
 - Do not update entity (place) position if there is too much difference between consequential user GPS positions (i.e. gps signal is not so stable, so if position is changing a lot in 1-2 seconds, do not consider that --> this may cause problems if user is in a car or some kind of fast moving transport?)
-- Add UX/UI and messages when gps data is not available or there's very poor signal
 - Try to integrate altitude
 - Have more beers
 - ...
@@ -20,4 +19,5 @@
 - Enhanced Documentation
 - Added an alert message when geolocation is switched off (from Phone Settings or permission not granted)
 - Remove every setInterval interaction between aframe components, interactions are now only event based
+- Add UX/UI and messages when GPS data is not available or there's very poor signal (using a property)
 - Had some beers
