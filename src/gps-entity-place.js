@@ -33,7 +33,7 @@ AFRAME.registerComponent('gps-entity-place', {
 
                 setTimeout(() => {
                     container.parentElement.removeChild(container);
-                }, 2000);
+                }, 1500);
             }
         };
 
@@ -62,6 +62,10 @@ AFRAME.registerComponent('gps-entity-place', {
         return true;
     },
 
+    /**
+     * Update place position
+     * @returns {void}
+     */
     _updatePosition: function () {
         var position = { x: 0, y: 0, z: 0 }
 
@@ -88,6 +92,10 @@ AFRAME.registerComponent('gps-entity-place', {
         this.el.setAttribute('position', position);
     },
 
+    /**
+     * Set places distances from user on debug UI
+     * @returns {void}
+     */
     setDebugData: function(element) {
         const elements =  document.querySelectorAll('.debug-distance');
         elements.forEach((el) => {
@@ -99,6 +107,11 @@ AFRAME.registerComponent('gps-entity-place', {
     },
 });
 
+/**
+ * Format distances string
+ *
+ * @param {String} distance
+ */
 function formatDistance(distance) {
     distance = distance.toFixed(0);
 
