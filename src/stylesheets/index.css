@@ -8,22 +8,26 @@ div.debug {
     left: 10px;
     z-index: 1;
     width: 100%;
-    color: limegreen;
+    background-color: rgba(1, 1, 1, 0.2);
+    color: #ff7500;
     font-size: 0.75em;
+    padding: 0.5em;
+    width: initial;
 }
 
 #alert-popup {
+    border-radius: 5px;
     position: absolute;
-    bottom: 20%;
+    bottom: 10%;
     left: 5%;
     display: block;
     width: 80%;
     margin: 1em;
     padding: 0.25em;
-    color: white;
+    color: #ff7500;
     font-size: 0.75em;
     text-align: center;
-    background-color: #444;
+    background-color: white;
 }
 
 #place-label {
@@ -38,6 +42,9 @@ div.debug {
 #place-label > span {
     z-index: 99999;
     padding: 0.25em;
-    color: white;
+    color: #ff7500;
+    text-align: center;
+    background-color: white;
     font-size: 1.5em;
+    border-radius: 5px;
 }

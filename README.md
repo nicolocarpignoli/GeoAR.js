@@ -54,6 +54,7 @@ In addition to that, as you can see on the example above, we also have to add `r
 |------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | alert     | Whether to show a message when GPS signal is under the `positionMinAccuracy`                  | false |                                                                                                                                                                        | true          |
 | positionMinAccuracy        | Minimum accuracy allowed for position signal    | 100 |
+| minDistance        | If set, places with a distance from the user lower than this value, are not showed. Only a positive value is allowed. Value is in meters.    | 0 (disabled) |
 
 ### `gps-entity-place`
 

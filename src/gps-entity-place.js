@@ -75,7 +75,7 @@ AFRAME.registerComponent('gps-entity-place', {
             latitude: this._cameraGps.originCoords.latitude,
         };
 
-        position.x = this._cameraGps.computeDistanceMeters(this._cameraGps.originCoords, dstCoords);
+        position.x = this._cameraGps.computeDistanceMeters(this._cameraGps.originCoords, dstCoords, true);
         this._positionXDebug = position.x;
         position.x *= this.data.longitude > this._cameraGps.originCoords.longitude ? 1 : -1;
 
@@ -85,7 +85,7 @@ AFRAME.registerComponent('gps-entity-place', {
             latitude: this.data.latitude,
         };
 
-        position.z = this._cameraGps.computeDistanceMeters(this._cameraGps.originCoords, dstCoords);
+        position.z = this._cameraGps.computeDistanceMeters(this._cameraGps.originCoords, dstCoords, true);
 		position.z *= this.data.latitude > this._cameraGps.originCoords.latitude ? -1 : 1;
 
         // update element's position in 3D world

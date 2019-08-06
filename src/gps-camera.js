@@ -14,6 +14,10 @@ AFRAME.registerComponent('gps-camera', {
             type: 'boolean',
             default: false,
         },
+        minDistance: {
+            type: 'int',
+            default: 0,
+        }
     },
 
     init: function () {
@@ -157,21 +161,28 @@ AFRAME.registerComponent('gps-camera', {
     /**
      * Returns distance in meters between source and destination inputs.
      *
+     *  Calculate distance, bearing and more between Latitude/Longitude points
+     *  Details: https://www.movable-type.co.uk/scripts/latlong.html
+     * 
      * @param {Position} src
      * @param {Position} dest
+     * @param {Boolean} isPlace
      *
      * @returns {number} distance
      */
-    computeDistanceMeters: function (src, dest) {
-        // 'Calculate distance, bearing and more between Latitude/Longitude points'
-        // Details: https://www.movable-type.co.uk/scripts/latlong.html
-
+    computeDistanceMeters: function (src, dest, isPlace = false) {
         var dlongitude = THREE.Math.degToRad(dest.longitude - src.longitude);
         var dlatitude = THREE.Math.degToRad(dest.latitude - src.latitude);
 
         var a = (Math.sin(dlatitude / 2) * Math.sin(dlatitude / 2)) + Math.cos(THREE.Math.degToRad(src.latitude)) * Math.cos(THREE.Math.degToRad(dest.latitude)) * (Math.sin(dlongitude / 2) * Math.sin(dlongitude / 2));
         var angle = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         const distance = angle * 6378160;
+
+        // if function has been called for a place, and if it's too near and a min distance has been set,
+        // set a very high distance to hide the object
+        if (isPlace && this.data.minDistance && this.data.minDistance > 0 && distance < this.data.minDistance) {
+            return Number.MAX_SAFE_INTEGER;
+        }
 
         return distance;
     },
