@@ -1,6 +1,6 @@
 # GeoAR.js
 
-## Overview (the WHY)
+## Overview
 
 🌍The aim is to bring a basic but working Location Based AR system to the actual [AR.js](https://github.com/jeromeetienne/AR.js/) (currently marker based only).
 
@@ -14,7 +14,7 @@ These `aframe` components can work independently from AR.js. By the way, they ar
 
 For updated stuff about GeoAR.js and AR.js, you can [follow me](https://twitter.com/nicolocarp).
 
-## How it works (the HOW)
+## How it works
 
 Basically, you can add `gps-entity-place` - custom `aframe` entities that have a specific longitude/latitude values. You can add them with a script, loading them from APIs (Foursquare, Google Maps, and so on) or just add them statically on your HTML. You can also load them dynamically as you move to a wider area using APIs. Choice is yours and possibilities are endless with Javascript.
 
@@ -25,7 +25,7 @@ Using your phone sensors for orientation/position, it is able to show on your ca
 If you move the camera, it calculates again orientation and position. If places are far, it shows thinner content. If places are near you, it shows it bigger.
 Hope I give to you the basic idea. Let's try a demo.
 
-## Demo (the WHAT)
+## Demo
 
 >Work In Progress
 
@@ -40,7 +40,7 @@ Otherwise, as default, the script searches for places of interest near the user 
 You can also use GeoAR.js **without** the script, adding `gps-entity-place` entities as documentated on the following section, 
 putting them directly on the `basic.html` file.
 
-## Components (the WTF)
+## Components
 
 >Work In Progress
 
@@ -96,7 +96,7 @@ It has to be added to the `a-scene`:
 <a-scene gps-camera-debug embedded arjs='sourceType: webcam; debugUIEnabled: false;'></a-scene>
 ```
 
-## Support (the WHY NOT)
+## Support
 
 Tried on Huawei P20, works like charm.
 
@@ -104,7 +104,7 @@ Problem with iPhone 6, loads all good but when rotating and moving the camera, p
 
 We need a lot of more tests, but the first impression is: the more advanced the phone (so newer) the better. This because of better quality sensors.
 
-## Credits (the WHO)
+## Credits
 
 It is based on the discussion from this [github issue](https://github.com/jeromeetienne/AR.js/issues/190).
 It has been originated by [1d10t](https://github.com/1d10t) in this [file](https://1d10t.github.io/test/phills-sphere.html).
