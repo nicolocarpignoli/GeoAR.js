@@ -1,14 +1,9 @@
 {
   "name": "geo-arjs",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "",
   "scripts": {
-    "build": "rna build --production",
-    "watch": "rna build --watch",
-    "test": "rna lint + unit",
-    "lint": "rna lint",
     "start": "yarn install --ignore-scripts && rna build --watch",
-    "prepublish": "yarn run build"
   },
   "license": "MIT",
   "author": "Nicolò Carpignoli",
