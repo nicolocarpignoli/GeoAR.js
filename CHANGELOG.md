@@ -1,4 +1,4 @@
-# Changelog v0.0.1
+# Changelog v1.0.0-beta
 ~~nicolocarpignoli
 
 ### What I done so far
