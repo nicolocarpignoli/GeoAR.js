@@ -33,7 +33,7 @@ Hope I give to you the basic idea. Let's try a demo.
 
 The demo code is at [examples/basic.html](examples/basic.html).
 
-It uses the [examples/places.js](examples/place.js) script to load places. You can use that with static data using your coordinates, adding these info in the first lines of code (there are comments to explain better).
+It uses the [examples/places.js](./examples/places.js) script to load places. You can use that with static data using your coordinates, adding these info in the first lines of code (there are comments to explain better).
 
 Otherwise, as default, the script searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials (client secret and client id) on `examples/places.js` line 30 or so.
 
