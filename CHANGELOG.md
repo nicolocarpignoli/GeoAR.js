@@ -1,14 +1,6 @@
 # Changelog v0.0.1
 ~~nicolocarpignoli
 
-### What I want to do
-
-- Bug: only text (a-text, and not aframe primitives or a-image!) are not showed if added to places ONLY towards north directions
-- Do not update entity (place) position if there is too much difference between consequential user GPS positions (i.e. gps signal is not so stable, so if position is changing a lot in 1-2 seconds, do not consider that --> this may cause problems if user is in a car or some kind of fast moving transport?)
-- Try to integrate altitude
-- Have more beers
-- ...
-
 ### What I done so far
 
 - Added comments and cleaned code using standard coding practices
