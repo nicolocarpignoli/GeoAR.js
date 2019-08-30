@@ -30,6 +30,14 @@ AFRAME.registerComponent('gps-camera', {
         // listen to deviceorientation event
         var eventName = this._getDeviceOrientationEventName();
         this._onDeviceOrientation = this._onDeviceOrientation.bind(this);
+
+        // From iOS 12.2 Safari has Motion & Orientation turned off by default.
+        // This may change from iOS 13.*
+        const timeout = setTimeout(() => alert('Please enable device orientation in Settings > Safari > Motion & Orientation Access.'), 750);
+        window.addEventListener(eventName, () => {
+            clearTimeout(timeout);
+        });
+
         window.addEventListener(eventName, this._onDeviceOrientation, false);
 
         this._watchPositionId = this._initWatchGPS(function (position) {
