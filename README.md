@@ -100,7 +100,10 @@ It has to be added to the `a-scene`:
 
 Tried on Huawei P20, works like charm.
 
-Problem with iPhone 6, loads all good but when rotating and moving the camera, places position are not updated and remain fixed.
+Works good also on iPhone 6.
+
+On iOS, from 12.2, Motion sensors has to activated from Settings. If not, GeoAR.js prompt the user to do so.
+This [may change with final release of iOS 13](https://developer.apple.com/documentation/safari_release_notes/safari_13_beta_6_release_notes) but as September 2019 is not yet out.
 
 We need a lot of more tests, but the first impression is: the more advanced the phone (so newer) the better. This because of better quality sensors.
 
@@ -108,6 +111,7 @@ We need a lot of more tests, but the first impression is: the more advanced the 
 
 It is based on the discussion from this [github issue](https://github.com/jeromeetienne/AR.js/issues/190).
 It has been originated by [1d10t](https://github.com/1d10t) in this [file](https://1d10t.github.io/test/phills-sphere.html).
-This project has been originally crated by Jerome Etienne as a branch of AR.js and then as standalone repository, but was left alone from 2017. Now I'm trying to bring it alive again!
+The first mock up project has been originally created by Jerome Etienne as a branch of AR.js and then as standalone repository, but was left alone from 2017. 
+What I'm doing is to bring it alive and kicking for the first time since its creation.
 
 Thanks a LOT for all contributions! ❤️
