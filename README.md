@@ -22,7 +22,7 @@ Once you have added one or more gps-entities, and added the `gps-camera` on the 
 
 Using your phone sensors for orientation/position, it is able to show on your camera a content for each place on its 'physical' place (so if you point the camera toward the place in real life, you will see the content near it).
 
-If you move the camera, it calculates again orientation and position. If places are far, it shows thinner content. If places are near you, it shows it bigger.
+If you move the camera, it calculates again orientation and position. If places are far, it shows smaller content. If places are near you, it shows it bigger.
 Hope I give to you the basic idea. Let's try a demo.
 
 ## Demo
