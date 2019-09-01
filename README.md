@@ -45,7 +45,7 @@ There are currently three different examples that use GeoAR.js.
 
 Every example uses the `places.js` script to load places. You can use that with static data using your coordinates, adding these info in the first lines of code (there are comments to explain better).
 
-Otherwise, as default, the script searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials (client secret and client id) on `examples/places.js` line 25 or so.
+Otherwise, as default, the script searches for places of interest near the user using Foursquare APIs. Please retrieve valid API credentials [here](https://developer.foursquare.com/) in order to use it. Place credentials (client secret and client id) on `places.js`.
 
 You can also use GeoAR.js **without** the script, adding `gps-entity-place` entities as documentated on the following section, putting them directly on the `index.html` file.
 
