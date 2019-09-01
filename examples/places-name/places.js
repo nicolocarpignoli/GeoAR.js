@@ -37,7 +37,7 @@ function loadPlaceFromAPIs(position) {
         &radius=${params.radius}
         &client_id=${params.clientId}
         &client_secret=${params.clientSecret}
-        &limit=15
+        &limit=5
         &v=${params.version}`;
     return fetch(endpoint)
         .then((res) => {
@@ -65,17 +65,25 @@ window.onload = () => {
                     const latitude = place.location.lat;
                     const longitude = place.location.lng;
 
-                    // add place icon
+                    // add place name
+                    const text = document.createElement('a-text');
+                    text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    text.setAttribute('name', place.name);
+                    text.setAttribute('value', place.name);
+                    text.setAttribute('color', '#ff7500');
+                    text.setAttribute('width', '150');
+
                     const icon = document.createElement('a-image');
                     icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     icon.setAttribute('name', place.name);
-                    icon.setAttribute('src', 'assets/map-marker.png');
+                    icon.setAttribute('src', '../assets/map-marker.png');
 
                     // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-                    icon.setAttribute('scale', '20, 20');
+                    icon.setAttribute('scale', '50, 50, 50');
 
-                    icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+                    text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
+                    scene.appendChild(text);
                     scene.appendChild(icon);
                 });
             })
