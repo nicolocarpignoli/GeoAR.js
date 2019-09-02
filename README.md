@@ -29,8 +29,6 @@ Hope I give to you the basic idea. Let's try a demo.
 
 >Work In Progress
 
-🌍[Click here for the online version of the demo](https://nicolo-carpignoli.herokuapp.com/examples/basic.html)!
-
 There are currently three different examples that use GeoAR.js.
 
 - [Click Places](./examples/click-places/) 
