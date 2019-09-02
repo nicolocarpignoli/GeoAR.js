@@ -28,12 +28,9 @@ Hope I give to you the basic idea. Let's try a demo.
 
 >Work In Progress
 
-🌍[Click here for the online version of the demo](https://nicolo-carpignoli.herokuapp.com/examples/basic.html)!
-
 There are three different examples that use GeoAR.js.
-Currently it's possible to see the examples on local environment. You have to clone the project, set up the examples and then launch them.
-Online ready-to-use versions of the demo are coming soon.
-
+Currently it's possible to see the examples only on local environment. You have to clone the project, set up the examples and then launch them.
+🔜Online ready-to-use versions of the demo are coming soon.
 
 - [Click Places](./examples/click-places/) 
 
