@@ -16,7 +16,7 @@ const loadPlaces = function(coords) {
         return loadPlaceFromAPIs(coords);
     }
 
-    return PLACES;
+    return Promise.resolve(PLACES);
 };
 
 // getting places from REST APIs
@@ -58,7 +58,7 @@ window.onload = () => {
     // first get current user location
     return navigator.geolocation.getCurrentPosition(function (position) {
 
-        // than use it to load from remote APIs some places nearby
+        // then use it to load from remote APIs some places nearby
         loadPlaces(position.coords)
             .then((places) => {
                 places.forEach((place) => {
