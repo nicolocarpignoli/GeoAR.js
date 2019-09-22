@@ -1,4 +1,4 @@
-const loadPlaces = function(coords) {
+const loadPlaces = function (coords) {
     // COMMENT FOLLOWING LINE IF YOU WANT TO USE STATIC DATA AND ADD COORDINATES IN THE FOLLOWING 'PLACES' ARRAY
     const method = 'api';
 
@@ -37,7 +37,7 @@ function loadPlaceFromAPIs(position) {
         &radius=${params.radius}
         &client_id=${params.clientId}
         &client_secret=${params.clientSecret}
-        &limit=5
+        &limit=35
         &v=${params.version}`;
     return fetch(endpoint)
         .then((res) => {
@@ -66,25 +66,17 @@ window.onload = () => {
                     const longitude = place.location.lng;
 
                     // add place name
-                    const text = document.createElement('a-text');
+                    const text = document.createElement('a-link');
                     text.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    text.setAttribute('name', place.name);
-                    text.setAttribute('value', place.name);
-                    text.setAttribute('color', '#ff7500');
-                    text.setAttribute('width', '150');
-
-                    const icon = document.createElement('a-image');
-                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    icon.setAttribute('name', place.name);
-                    icon.setAttribute('src', '../assets/map-marker.png');
-
-                    // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-                    icon.setAttribute('scale', '50, 50, 50');
-
-                    text.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
+                    text.setAttribute('title', place.name);
+                    text.setAttribute('href', 'http://www.example.com/');
+                    text.setAttribute('scale', '20 20 20');
+                    
+                    text.addEventListener('loaded', () => {
+                        window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+                    });
 
                     scene.appendChild(text);
-                    scene.appendChild(icon);
                 });
             })
     },

@@ -13,7 +13,7 @@ AFRAME.registerComponent('gps-entity-place', {
     init: function () {
         this._positionXDebug = 0;
 
-        this.debugUIAddedHandler = function() {
+        this.debugUIAddedHandler = function () {
             this.setDebugData(this.el);
             window.removeEventListener('debug-ui-added', this.debugUIAddedHandler.bind(this));
         };
@@ -70,8 +70,8 @@ AFRAME.registerComponent('gps-entity-place', {
      * Set places distances from user on debug UI
      * @returns {void}
      */
-    setDebugData: function(element) {
-        const elements =  document.querySelectorAll('.debug-distance');
+    setDebugData: function (element) {
+        const elements = document.querySelectorAll('.debug-distance');
         elements.forEach((el) => {
             const distance = formatDistance(this._positionXDebug);
             if (element.getAttribute('value') == el.getAttribute('value')) {
@@ -90,7 +90,7 @@ function formatDistance(distance) {
     distance = distance.toFixed(0);
 
     if (distance >= 1000) {
-        return `${distance/1000} kilometers`;
+        return `${distance / 1000} kilometers`;
     }
 
     return `${distance} meters`;
