@@ -28,12 +28,8 @@ Hope I give to you the basic idea. Let's try a demo.
 
 ## Demo
 
->Work In Progress
-
-There are three different examples that use GeoAR.js.  
-Currently it's possible to see the examples only on local environment. You have to clone the project, set up the examples and then launch them.  
-
-🌍Click on example name for the online ready-to-use versions. Open it on mobile phone.
+🌍Click on example name for the online ready-to-use version. 
+📲Open from mobile phone.
 
 - [Click Places](https://nicolo-carpignoli.herokuapp.com/examples/basic.html) 
 
