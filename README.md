@@ -35,12 +35,12 @@ Currently it's possible to see the examples only on local environment. You have 
 
 🌍Click on example name for the online ready-to-use versions. Open it on mobile phone.
 
-- [Click Places](http://nicolo-carpignoli.herokuapp.com/examples/basic.html) 
+- [Click Places](https://nicolo-carpignoli.herokuapp.com/examples/basic.html) 
 
     Show place icon for every place. Clicking on the icon it shows the place name.
 
     <img src="docs/click-places.gif">
-- [Places Name](http://nicolo-carpignoli.herokuapp.com/examples/places-name) 
+- [Places Name](https://nicolo-carpignoli.herokuapp.com/examples/places-name) 
 
     Show place name for every place. Clicking on places will redirect to a certain URL (now mocked up).
 - [Add Objects](./examples/add-objects/) [WIP]
