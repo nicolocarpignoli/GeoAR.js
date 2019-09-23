@@ -28,7 +28,7 @@ Hope I give to you the basic idea. Let's try a demo.
 
 ## Demo
 
-🌍Click on example name for the online ready-to-use version. 
+🌍Click on the example name for the online version.  
 📲Open from mobile phone.
 
 - [Click Places](https://nicolo-carpignoli.herokuapp.com/examples/basic.html) 
