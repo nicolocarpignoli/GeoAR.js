@@ -33,16 +33,16 @@ Hope I give to you the basic idea. Let's try a demo.
 There are three different examples that use GeoAR.js.  
 Currently it's possible to see the examples only on local environment. You have to clone the project, set up the examples and then launch them.  
 
-🔜Online ready-to-use versions of the demo are coming soon.
+🌍Click on example name for the online ready-to-use versions. Open it on mobile phone.
 
-- [Click Places](./examples/click-places/) 
+- [Click Places](http://nicolo-carpignoli.herokuapp.com/examples/basic.html) 
 
     Show place icon for every place. Clicking on the icon it shows the place name.
 
     <img src="docs/click-places.gif">
-- [Places Name](./examples/places-name/) [WIP]
+- [Places Name](http://nicolo-carpignoli.herokuapp.com/examples/places-name) 
 
-    Show place name for every place. 
+    Show place name for every place. Clicking on places will redirect to a certain URL (now mocked up).
 - [Add Objects](./examples/add-objects/) [WIP]
     
     Add one or more objects on certain GPS positions and see them in real world with your camera.
