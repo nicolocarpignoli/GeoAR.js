@@ -21,7 +21,7 @@ AFRAME.registerComponent('gps-camera-debug', {
 
         this.placesLoadedEventHandler = function() {
             this.entities++;
-            const entities = document.querySelectorAll('[gps-entity-place]') && document.querySelectorAll('[gps-entity-place]').length || 0;
+            const entities = document.querySelectorAll('[data-gps_entity_place]') && document.querySelectorAll('[data-gps_entity_place]').length || 0;
 
             if (entities === this.entities) {
                 // all entities added, we can build debug UI
@@ -103,7 +103,7 @@ AFRAME.registerComponent('gps-camera-debug', {
      */
     _buildDistancesDebugUI: function() {
         const div = document.querySelector('.debug');
-        document.querySelectorAll('[gps-entity-place]').forEach((element) => {
+        document.querySelectorAll('[data-gps_entity_place]').forEach((element) => {
             const debugDiv = document.createElement('div');
             debugDiv.classList.add('debug-distance');
             debugDiv.innerHTML = element.getAttribute('value');
