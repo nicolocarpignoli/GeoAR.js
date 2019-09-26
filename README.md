@@ -33,12 +33,14 @@ Hope I give to you the basic idea. Let's try a demo.
 
 - [Click Places](https://nicolo-carpignoli.herokuapp.com/examples/basic.html) 
 
-    Show place icon for every place. Clicking on the icon it shows the place name.
+    Show place icon for every place. Clicking on the icon will show the place name.
 
     <img src="docs/click-places.gif">
 - [Places Name](https://nicolo-carpignoli.herokuapp.com/examples/places-name) 
 
-    Show place name for every place. Clicking on places will redirect to a certain URL (now mocked up).
+    Show icon and place name above. Clicking on places will redirect to a certain URL (now mocked up).
+
+    <img src="docs/places-name.gif">
 - [Add Objects](./examples/add-objects/) [WIP]
     
     Add one or more objects on certain GPS positions and see them in real world with your camera.
