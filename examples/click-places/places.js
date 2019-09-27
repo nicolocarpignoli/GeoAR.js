@@ -8,6 +8,7 @@ const loadPlaces = function(coords) {
             location: {
                 lat: 0, // add here latitude if using static data
                 lng: 0, // add here longitude if using static data
+
             }
         },
     ];
@@ -67,7 +68,7 @@ window.onload = () => {
 
                     // add place icon
                     const icon = document.createElement('a-image');
-                    icon.setAttribute('data-gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
+                    icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
                     icon.setAttribute('name', place.name);
                     icon.setAttribute('src', '../assets/map-marker.png');
 
@@ -99,7 +100,7 @@ window.onload = () => {
                     };
 
                     icon.addEventListener('click', clickListener);
-
+                    
                     scene.appendChild(icon);
                 });
             })
