@@ -67,7 +67,7 @@ window.onload = () => {
 
                     // add place name
                     const text = document.createElement('a-link');
-                    text.setAttribute('data-gps_entity_place', `latitude: ${latitude}; longitude: ${longitude};`);
+                    text.setAttribute('data-gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                     text.setAttribute('title', place.name);
                     text.setAttribute('href', 'http://www.example.com/');
                     text.setAttribute('scale', '20 20 20');
