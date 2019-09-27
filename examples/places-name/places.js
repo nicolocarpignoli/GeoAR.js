@@ -16,7 +16,7 @@ const loadPlaces = function (coords) {
         return loadPlaceFromAPIs(coords);
     }
 
-    return PLACES;
+    return Promise.resolve(PLACES);
 };
 
 // getting places from REST APIs
@@ -71,7 +71,7 @@ window.onload = () => {
                     text.setAttribute('title', place.name);
                     text.setAttribute('href', 'http://www.example.com/');
                     text.setAttribute('scale', '20 20 20');
-                    
+
                     text.addEventListener('loaded', () => {
                         window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
                     });

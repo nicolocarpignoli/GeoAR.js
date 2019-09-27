@@ -8,6 +8,7 @@ const loadPlaces = function(coords) {
             location: {
                 lat: 0, // add here latitude if using static data
                 lng: 0, // add here longitude if using static data
+
             }
         },
     ];
@@ -79,11 +80,11 @@ window.onload = () => {
                     const clickListener = function(ev) {
                         ev.stopPropagation();
                         ev.preventDefault();
-            
+
                         const name = ev.target.getAttribute('name');
-            
+
                         const el = ev.detail.intersection && ev.detail.intersection.object.el;
-            
+
                         if (el && el === ev.target) {
                             const label = document.createElement('span');
                             const container = document.createElement('div');
@@ -91,15 +92,15 @@ window.onload = () => {
                             label.innerText = name;
                             container.appendChild(label);
                             document.body.appendChild(container);
-            
+
                             setTimeout(() => {
                                 container.parentElement.removeChild(container);
                             }, 1500);
                         }
                     };
-            
-                    icon.addEventListener('click', clickListener);
 
+                    icon.addEventListener('click', clickListener);
+                    
                     scene.appendChild(icon);
                 });
             })
