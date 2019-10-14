@@ -11,10 +11,6 @@
     </script>
 </head>
 
-<!-- include GeoAR.js -->
-<script src="../../src/gps-entity-place.js"></script>
-<script src="../../src/gps-camera-debug.js"></script>
-<script src="../../src/gps-camera.js"></script>
 <link rel="stylesheet" href="../../src/stylesheets/index.css">
 
 <!-- Dynamically add places from Javascript -->
@@ -28,7 +24,7 @@
 		embedded
 		arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
 
-        <a-camera gps-camera="minDistance: 20;" rotation-reader>
+        <a-camera gps-camera rotation-reader>
 		</a-camera>
 	</a-scene>
 </body>
