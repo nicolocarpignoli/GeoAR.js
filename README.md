@@ -6,7 +6,10 @@ To better introduce this library I wrote an [article on Medium](https://medium.c
 
 See the [AR.js Changelog](https://github.com/jeromeetienne/AR.js/blob/master/CHANGELOG.md).
 
-Refer to [AR.js issues](https://github.com/jeromeetienne/AR.js/issues) for issues present on this repository.
+Refer to [AR.js issues](https://github.com/jeromeetienne/AR.js/issues) for about this repository.
+**Please do not open issues here but directly on AR.js using 'location-based' label.**
+
+Soon the issues section of this repo will be closed. 
 
 ## Overview
 
