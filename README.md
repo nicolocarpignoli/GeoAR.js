@@ -2,13 +2,16 @@
 
 To better introduce this library I wrote an [article on Medium](https://medium.com/chialab-open-source/location-based-gps-augmented-reality-on-the-web-7a540c515b3c). You can start from it.
 
-**GeoAR.js has now been merged on AR.js!** 🌍
+## ⚠️ GeoAR.js has now been merged on AR.js! 🌍 
+⚠️ **Please refer to AR.js repository https://github.com/jeromeetienne/AR.js for this new feature.**
+
+**New features/bug fixing will take place on AR.js repository!**
 
 See the [AR.js Changelog](https://github.com/jeromeetienne/AR.js/blob/master/CHANGELOG.md).
 
 Refer to [AR.js issues](https://github.com/jeromeetienne/AR.js/issues) for problems and feature requests about this project.
 
-**Please do not open issues here but directly on AR.js using 'location-based' label.**
+**Please open issues on AR.js using the 'location-based' label.**
 
 ## Overview
 
